@@ -1,0 +1,17 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    column-gap: 80px;
+}
+
+.dialogs .dialog {
+    font-size: 20px;
+    line-height: 1.6;
+    letter-spacing: 0.075em;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.dialogs {
+    color: white;
+}

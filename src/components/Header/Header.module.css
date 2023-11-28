@@ -1,0 +1,11 @@
+.header {
+    grid-area: h;
+    background-color: rgb(36, 35, 35);
+    font-size: 25px;
+    text-align: left;
+    color: white;
+  }
+  
+  .header img {
+    width: 40px;
+  }

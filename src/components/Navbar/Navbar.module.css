@@ -1,0 +1,25 @@
+body, html, header{
+  background-color: rgb(26, 25, 25);
+}
+
+.nav {
+  grid-area: n;
+  background-color: rgba(26, 25, 25, 0);
+  padding: 10px;
+}
+
+.nav .item {
+  height: 40px;
+  font-size: 19px;
+  text-align:left;
+  font-style: inherit;
+}
+
+.nav .item a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.nav .item :hover {
+  background-color: rgba(67, 67, 68, 0.423);
+}
