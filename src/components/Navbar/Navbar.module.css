@@ -1,4 +1,6 @@
-body, html, header{
+body,
+html,
+header {
   background-color: rgb(26, 25, 25);
 }
 
@@ -10,8 +12,8 @@ body, html, header{
 
 .nav .item {
   height: 40px;
-  font-size: 19px;
-  text-align:left;
+  font-size: 18.8px;
+  text-align: left;
   font-style: inherit;
 }
 

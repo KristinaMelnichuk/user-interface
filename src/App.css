@@ -12,6 +12,7 @@
 
 .app-wrapper-content {
   color: white;
+ border: 1px solid rgb(60, 58, 58);
   border-radius: 20px;
   grid-area: c;
   background-color: rgb(36, 35, 35);

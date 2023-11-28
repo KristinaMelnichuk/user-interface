@@ -1,11 +1,13 @@
 .header {
-    grid-area: h;
-    background-color: rgb(36, 35, 35);
-    font-size: 25px;
-    text-align: left;
-    color: white;
-  }
-  
-  .header img {
-    width: 40px;
-  }
+  grid-area: h;
+  background-color: rgb(36, 35, 35);
+  border: 1px solid rgb(46, 44, 44);
+  border-radius: 2px;
+  font-size: 25px;
+  text-align: left;
+  color: white;
+}
+
+.header img {
+  width: 40px;
+}
