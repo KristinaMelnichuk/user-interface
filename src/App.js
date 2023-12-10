@@ -6,7 +6,7 @@ import Dialogs from './components/Dialogs/Dialogs.jsx';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -16,6 +16,7 @@ const App = () => {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
+            <Route path='/' element={<Navigate to='/Profile' />} />
             <Route path='/profile' Component={Profile} />
             <Route path='/dialogs/*' Component={Dialogs} />
             <Route path='/news' Component={News} />

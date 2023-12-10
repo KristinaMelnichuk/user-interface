@@ -1,17 +1,14 @@
-import MyPosts from './MyPosts/MyPosts.jsx';
 import './Profile.css';
+import MyPosts from './MyPosts/MyPosts.jsx';
+import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 
 const Profile = () => {
   return (
-    <div className='profilegrid'>
-      <div>
-        <img src="https://interier-foto.ru/wp-content/uploads/2014/11/gora-beluha6137.jpg" />
-      </div>
-      <div className='profiletxt'>
-        <p>ava + description</p>
-        <MyPosts />
-      </div>
+    <div>
+      <ProfileInfo />
+      <MyPosts />
     </div>
-  );
+  )
 }
+
 export default Profile;
