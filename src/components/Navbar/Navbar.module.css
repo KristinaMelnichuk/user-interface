@@ -11,10 +11,11 @@ header {
 }
 
 .nav .item {
-  height: 40px;
-  font-size: 18.8px;
+  height: 50px;
+  font-size: 15.8px;
   text-align: left;
   font-style: inherit;
+  width: 120px;
 }
 
 .nav .item a {

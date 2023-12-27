@@ -1,0 +1,8 @@
+.commonProfile {
+    display: grid;
+    grid-template-areas:
+        "profilegrid"
+        " mypostsgrid";
+    grid-gap: 20px;
+    width: 900px;
+}
