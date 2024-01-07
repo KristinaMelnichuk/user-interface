@@ -5,7 +5,7 @@ const Header = () => {
         <header className={c.header} >
 
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/VK_Compact_Logo_%282021-present%29.svg/2048px-VK_Compact_Logo_%282021-present%29.svg.png" /> ВКОНТАКТЕ
-           <button className={c.buttonSearch}>Поиск</button>
+            {/* <button className={c.buttonSearch}>Поиск</button> <button>Выйти</button> */}
         </header>
     );
 }
