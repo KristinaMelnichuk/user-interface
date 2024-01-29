@@ -1,12 +1,14 @@
 import './Profile.css';
 import MyPosts from './MyPosts/MyPosts.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
+import { addPost } from '../../redux/state.js';
 
-const Profile = () => {
+const Profile = (props) => {
+  console.log('props', props)
   return (
     <div className='commonProfile'>
       <ProfileInfo />
-      <MyPosts />
+      <MyPosts posts ={props.state.posts} addPost={props.addPost}/>
     </div>
   )
 }

@@ -2,25 +2,18 @@
 import c from "./Dialogs.module.css";
 import Message from "./Message/Message.jsx";
 import DialogItem from "./DialogItem/DialogItem.jsx";
+import React from "react";
 
 const Dialogs = (props) => {
-    let dialogs = [
-        { id: 1, name: "Dima" },
-        { id: 2, name: "Alyona" },
-        { id: 3, name: "Sveta" },
-        { id: 4, name: "Nikita" }
-    ]
+    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} avatar={d.avatar} id={d.id} />);
 
-    let messages = [
-        { id: 1, messages: "Привет, будешь играть в лигу? =)" },
-        { id: 2, messages: "Приветик!" },
-        { id: 3, messages: "Как дела??" },
-        { id: 4, messages: "Хай :3" },
-    ]
+    let messagesElements = props.state.messages.map(m => <Message message={m.messages} />);
 
-    let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
-    
-    let messagesElements = messages.map(m => <Message message={m.messages} />);
+    let newElementMessage = React.createRef();
+    let addMessage = () => {
+        let newAddMessage = newElementMessage.current.value;
+        alert(newAddMessage)
+    }
 
     return (
         <div className={c.dialogsandMessages}>
@@ -30,9 +23,16 @@ const Dialogs = (props) => {
                 </div>
                 <div className={c.messages}>
                     {messagesElements}
+                    <div>
+                        <textarea ref={newElementMessage}></textarea>
+                    </div>
+                    <div>
+                        <button onClick={addMessage}>Add post</button>
+                    </div>
                 </div>
             </div>
-        </div>)
+        </div>
+    )
 }
 
 export default Dialogs;
