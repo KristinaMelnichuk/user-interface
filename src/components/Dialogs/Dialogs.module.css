@@ -15,6 +15,7 @@
     border: 1px solid rgb(60, 58, 58);
     border-radius: 14px;
     background-color: rgb(36, 35, 35);
+    color: rgb(213, 213, 215);
 }
 
 .dialogsItem a {
@@ -25,12 +26,16 @@
 .dialogsItem :hover a {
     background-color: rgba(80, 75, 75, 0.345);
     border-radius: 5px;
+  
 }
 
-.messages {
-    color: rgb(213, 213, 215);
+.dialogElementName {
+    text-align: left;
+    margin-left: 32%;
+    font-size: medium;
 }
 
-.dialogsItem  {
-width: 30%;
+.dialogElementImage {
+    width: 30%;
+    margin-top: -12%;
 }

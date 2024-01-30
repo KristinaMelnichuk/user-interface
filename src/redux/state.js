@@ -1,4 +1,4 @@
-import { rerenderEntireTree } from "../render";
+let rerenderEntireTree = () =>{}
 
 const state = {
   profilePage: {
@@ -6,7 +6,7 @@ const state = {
       { id: 1, message: "Hi", likes: "15" },
       { id: 2, message: "It's my first post", likes: "20" },
     ],
-    newPostText: 'Здесь будет твой пост'
+    newPostText: ''
   },
   messagesPage: {
     dialogs: [
@@ -21,13 +21,13 @@ const state = {
       { id: 3, messages: "Как дела??" },
       { id: 4, messages: "Хай :3" },
     ],
-    newMessageText: 'Здесь будет твоё сообщение'
+    newMessageText: ''
   }
 };
 
 window.state = state;
 
-export let addPost = () => {
+export const addPost = () => {
   let newPost = {
     id: 5,
     message: state.profilePage.newPostText,
@@ -39,16 +39,15 @@ export let addPost = () => {
   rerenderEntireTree(state);
 }
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree(state);
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
   let newMessage = {
     id: 5,
-    message: state.messagesPage.newMessageText,
-    likes: 0
+    messages: state.messagesPage.newMessageText,
   };
 
   state.messagesPage.messages.push(newMessage);
@@ -56,10 +55,13 @@ export let addMessage = () => {
   rerenderEntireTree(state);
 }
 
-
-export let updateNewMessageText = (newText) => {
+export const updateNewMessageText = (newText) => {
   state.messagesPage.newMessageText = newText;
   rerenderEntireTree(state);
+}
+
+export const subscribe = (observer) => {
+rerenderEntireTree = observer;
 }
 
 export default state;
