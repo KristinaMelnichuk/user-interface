@@ -3,15 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { addPost } from './redux/state.js';
+import { addPost, updateNewPostText, addMessage, updateNewMessageText } from './redux/state.js';
 import { BrowserRouter } from 'react-router-dom';
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 export let rerenderEntireTree = (state) => {
-  const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} addPost={addPost} />
+        <App
+          state={state}
+          addPost={addPost}
+          updateNewPostText={updateNewPostText}
+          
+          addMessage={addMessage}
+          updateNewMessageText={updateNewMessageText}
+        />
       </BrowserRouter>
     </React.StrictMode>
   );

@@ -6,7 +6,7 @@ import Dialogs from './components/Dialogs/Dialogs.jsx';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
-import { Routes, Route, Navigate} from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 const App = (props) => {
   return (
@@ -20,12 +20,21 @@ const App = (props) => {
             element={<Navigate to="/profile" />}
           />
           <Route
-            path='/profile' 
-            element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}
+            path='/profile'
+            element={<Profile
+              profilePage={props.state.profilePage}
+              addPost={props.addPost}
+              updateNewPostText={props.updateNewPostText}
+            />}
           />
           <Route
             path='/dialogs/*'
-            element={<Dialogs state={props.state.messagesPage} />}
+            element={<Dialogs
+          
+              messagesPage={props.state.messagesPage}
+              addMessage={props.addMessage}
+              updateNewMessageText={props.updateNewMessageText}
+            />}
           />
           <Route
             path='/news'
@@ -42,6 +51,7 @@ const App = (props) => {
         </Routes>
       </div>
     </div>
-  )};
+  )
+};
 
 export default App;

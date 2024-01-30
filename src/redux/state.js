@@ -6,6 +6,7 @@ const state = {
       { id: 1, message: "Hi", likes: "15" },
       { id: 2, message: "It's my first post", likes: "20" },
     ],
+    newPostText: 'Здесь будет твой пост'
   },
   messagesPage: {
     dialogs: [
@@ -20,17 +21,44 @@ const state = {
       { id: 3, messages: "Как дела??" },
       { id: 4, messages: "Хай :3" },
     ],
+    newMessageText: 'Здесь будет твоё сообщение'
   }
 };
 
-export let addPost = (postMessage) => {
+window.state = state;
+
+export let addPost = () => {
   let newPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likes: 0
   };
 
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = '';
+  rerenderEntireTree(state);
+}
+
+export let updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+}
+
+export let addMessage = () => {
+  let newMessage = {
+    id: 5,
+    message: state.messagesPage.newMessageText,
+    likes: 0
+  };
+
+  state.messagesPage.messages.push(newMessage);
+  state.messagesPage.newMessageText = '';
+  rerenderEntireTree(state);
+}
+
+
+export let updateNewMessageText = (newText) => {
+  state.messagesPage.newMessageText = newText;
   rerenderEntireTree(state);
 }
 
