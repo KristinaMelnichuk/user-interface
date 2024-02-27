@@ -1,6 +1,7 @@
 import './Profile.css';
 import MyPosts from './MyPosts/MyPosts.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
+import Groups from './Groups/Groups.jsx';
 
 const Profile = (props) => {
   return (
@@ -11,7 +12,8 @@ const Profile = (props) => {
         newPostText={props.profilePage.newPostText}
         updateNewPostText={props.updateNewPostText}
         addPost={props.addPost}
-      />
+      /> 
+     <Groups />
     </div>
   )
 }

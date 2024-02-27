@@ -7,7 +7,8 @@ const ProfileInfo = () => {
                 <img src="https://interier-foto.ru/wp-content/uploads/2014/11/gora-beluha6137.jpg" />
             </div>
             <div className={c.profiletxt}>
-                <p>ava + description</p>
+                <p>Кристина Мельничук</p>
+                <p>Город: Набережные Челны</p>
             </div>
         </div>
     )

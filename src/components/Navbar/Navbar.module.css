@@ -7,15 +7,13 @@ header {
 .nav {
   grid-area: n;
   background-color: rgba(26, 25, 25, 0);
-  padding: 10px;
+  padding: 5%;
+  margin-left: auto;
 }
 
 .nav .item {
-  height: 50px;
-  font-size: 15.8px;
-  text-align: left;
-  font-style: inherit;
-  width: 120px;
+  height: 40px;
+  font-size: 14.1px;
 }
 
 .nav .item a {
@@ -25,4 +23,9 @@ header {
 
 .nav .item :hover {
   background-color: rgba(67, 67, 68, 0.423);
+}
+
+.item img {
+  width: 22.5px;
+  margin-bottom: -5px;
 }

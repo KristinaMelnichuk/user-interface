@@ -1,8 +1,9 @@
 .commonProfile {
     display: grid;
     grid-template-areas:
-        "profilegrid"
-        " mypostsgrid";
+        "profilegrid profilegrid"
+        " mypostsgrid groupsGrid" ;
     grid-gap: 20px;
-    width: 900px;
+    width: 70%;
+    margin-left: 4.5%;
 }

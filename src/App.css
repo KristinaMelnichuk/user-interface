@@ -5,15 +5,15 @@
     "n c";
   grid-template-rows: 0fr 1fr;
   grid-template-columns: 2fr 10fr;
-  grid-column-gap: 3,5%;
+  grid-column-gap: 1%;
   grid-row-gap: 19px;
-  width: 100%;
 }
 
 .app-wrapper-content {
   color: white;
   border-radius: 19px;
   grid-area: c;
+
 }
 
 .app-wrapper-content img {

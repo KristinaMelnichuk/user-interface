@@ -1,0 +1,8 @@
+.groupsGrid {
+    grid-area: groupsGrid;
+    border: 1px solid rgb(60, 58, 58);
+    border-radius: 10px;
+    background-color: rgb(36, 35, 35);
+    width: 350px;
+    height: 50%;
+}
