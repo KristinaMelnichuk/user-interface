@@ -9,12 +9,12 @@ const MyPosts = (props) => {
 
   let addPost = () => {
     props.addPost();
-  }
+  };
 
   let onPostChange = () => {
     let text = newElementPost.current.value;
     props.updateNewPostText(text);
-  }
+  };
 
   return (
     <div className={c.mypostsgrid}>
