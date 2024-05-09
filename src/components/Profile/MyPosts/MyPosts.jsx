@@ -1,3 +1,4 @@
+import { type } from '@testing-library/user-event/dist/type/index.js';
 import c from './MyPosts.module.css';
 import Post from './Post/Post.jsx';
 import React from 'react';
@@ -8,12 +9,13 @@ const MyPosts = (props) => {
   let newElementPost = React.createRef();
 
   let addPost = () => {
-    props.addPost();
+    props.dispatch({ type: 'ADD-POST' });
   };
 
   let onPostChange = () => {
     let text = newElementPost.current.value;
-    props.updateNewPostText(text);
+    let action = { type: 'UPDATE-NEW-POST-TEXT', newText: text };
+    props.dispatch(action);
   };
 
   return (
@@ -24,8 +26,7 @@ const MyPosts = (props) => {
           <textarea
             onChange={onPostChange}
             ref={newElementPost}
-            value={props.newPostText}
-          />
+            value={props.newPostText} />
         </div>
         <div>
           <button onClick={addPost}>Add post</button>

@@ -23,14 +23,30 @@ let store = {
       newMessageText: ''
     },
   },
-  
-  getState () {
+  _callSubscriber() { },
+
+  getState() {
     return this._state;
   },
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
 
-  _callSubscriber () { },
+  _addMessage() {
+    let newMessage = {
+      id: 5,
+      messages: this._state.messagesPage.newMessageText,
+    };
+    this._state.messagesPage.messages.push(newMessage);
+    this._state.messagesPage.newMessageText = '';
+    this._callSubscriber(this._state);
+  },
+  _updateNewMessageText(newText) {
+    this._state.messagesPage.newMessageText = newText;
+    this._callSubscriber(this._state);
+  },
 
-  addPost () {
+  _addPost() {
     let newPost = {
       id: 5,
       message: this._state.profilePage.newPostText,
@@ -40,31 +56,23 @@ let store = {
     this._state.profilePage.newPostText = '';
     this._callSubscriber(this._state);
   },
-
-  updateNewPostText (newText) {
+  _updateNewPostText(newText) {
     this._state.profilePage.newPostText = newText;
     this._callSubscriber(this._state);
   },
 
-  addMessage () {
-    let newMessage = {
-      id: 5,
-      messages: this._state.messagesPage.newMessageText,
-    };
-    this._state.messagesPage.messages.push(newMessage);
-    this._state.messagesPage.newMessageText = '';
-    this._callSubscriber(this._state);
-  },
-
-  updateNewMessageText (newText)  {
-    this._state.messagesPage.newMessageText = newText;
-    this._callSubscriber(this._state);
-  },
-
-  subscribe (observer) {
-    this._callSubscriber = observer;
-  },
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      this._addPost();
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._updateNewPostText(action.newText)
+    } else if (action.type === 'ADD-MESSAGE') {
+      this._addMessage();
+    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+      this._updateNewMessageText(action.newText);
+    }
+  }
 }
 
 export default store;
-window.store = store;
+window.Storage = store;
