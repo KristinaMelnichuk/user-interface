@@ -10,3 +10,8 @@
     height: auto;
 }
 
+.profilegrid img {
+    width: 100%;
+    height: 100%;
+    border-radius: 19px;
+}

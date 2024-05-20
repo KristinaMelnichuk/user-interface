@@ -61,7 +61,7 @@ let store = {
     this._callSubscriber(this._state);
   },
 
-  dispatch(action) {
+  dispatch(action) {  //action - объект
     if (action.type === 'ADD-POST') {
       this._addPost();
     } else if (action.type === 'UPDATE-NEW-POST-TEXT') {

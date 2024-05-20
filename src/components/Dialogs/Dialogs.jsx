@@ -2,7 +2,6 @@ import c from "./Dialogs.module.css";
 import Message from "./Message/Message.jsx";
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 const Dialogs = (props) => {
     let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} avatar={d.avatar} id={d.id} />);
@@ -22,22 +21,21 @@ const Dialogs = (props) => {
 
     return (
         <div className={c.dialogsandMessages}>
-            <div className={c.dialogs}>
-                <div className={c.dialogsItem}>
-                    {dialogsElements}
-                </div>
-                <div className={c.messages}>
+            <div>
+                {dialogsElements}
+            </div>
+            <div>
+                <div>
                     {messagesElements}
-                    <div>
-                        <textarea
-                            onChange={onMessageChange}
-                            ref={newElementMessage}
-                            value={props.newMessageText}
-                        />
-                    </div>
-                    <div>
-                        <button onClick={addMessage}>Add post</button>
-                    </div>
+                </div>
+                <div>
+                    <textarea
+                        onChange={onMessageChange}
+                        ref={newElementMessage}
+                        value={props.newMessageText} />
+                </div>
+                <div>
+                    <button onClick={addMessage}>Отправить</button>
                 </div>
             </div>
         </div>

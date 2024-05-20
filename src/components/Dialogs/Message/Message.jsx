@@ -1,4 +1,4 @@
-import c from "../Dialogs.module.css";
+import c from "./Message.module.css";
 
 const Message = (props) => {
     return (

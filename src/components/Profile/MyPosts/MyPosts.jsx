@@ -29,7 +29,7 @@ const MyPosts = (props) => {
             value={props.newPostText} />
         </div>
         <div>
-          <button onClick={addPost}>Add post</button>
+          <button onClick={addPost}>Опубликовать</button>
         </div>
       </div>
       <div className={c.posts}>
