@@ -1,26 +1,28 @@
-import c from "./Dialogs.module.css";
+import React from "react";
+import styles from "./Dialogs.module.css";
 import Message from "./Message/Message.jsx";
 import DialogItem from "./DialogItem/DialogItem.jsx";
-import React from "react";
 
 const Dialogs = (props) => {
-    let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} avatar={d.avatar} id={d.id} />);
-    let messagesElements = props.messagesPage.messages.map(m => <Message message={m.messages} />);
+    // Создаем элементы для диалогов и сообщений
+    const dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem sender={d.sender} avatar={d.avatar} id={d.id} />);
+    const messagesElements = props.messagesPage.messages.map(m => <Message message={m.messages} />);
+    
+    // Создаем ссылку на текстовое поле
+    const newMessageRef = React.createRef();
 
-    let newElementMessage = React.createRef();
-
-    let addMessage = () => {
+    const addMessage = () => {
         props.dispatch({ type: 'ADD-MESSAGE' });
-    }
+    };
 
-    let onMessageChange = () => {
-        let text = newElementMessage.current.value;
-        let action = { type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text }
+    const onMessageChange = () => {
+        const text = newMessageRef.current.value;
+        const action = { type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text }
         props.dispatch(action);
-    }
+    };
 
     return (
-        <div className={c.dialogsandMessages}>
+        <div className={styles.dialogsandMessages}>
             <div>
                 {dialogsElements}
             </div>
@@ -31,8 +33,9 @@ const Dialogs = (props) => {
                 <div>
                     <textarea
                         onChange={onMessageChange}
-                        ref={newElementMessage}
-                        value={props.newMessageText} />
+                        ref={newMessageRef}
+                        value={props.newMessageText} 
+                    />
                 </div>
                 <div>
                     <button onClick={addMessage}>Отправить</button>

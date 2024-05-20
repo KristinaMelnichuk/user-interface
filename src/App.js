@@ -1,4 +1,7 @@
+import React from 'react';
 import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
 import Header from './components/Header/Header.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Profile from './components/Profile/Profile.jsx';
@@ -10,12 +13,10 @@ import Friends from './components/Friends/Friends.jsx';
 import Photo from './components/Photo/Photo.jsx';
 import Video from './components/Video/Video.jsx';
 import Services from './components/Service/Services.jsx';
-import { Routes, Route, Navigate } from 'react-router-dom';
-
 
 const App = (props) => {
   return (
-    <div className="app-wrapper" >
+    <div className="app-wrapper">
       <Header />
       <Navbar />
       <div className="app-wrapper-content">
@@ -27,14 +28,16 @@ const App = (props) => {
           <Route
             path='/profile'
             element={<Profile
-              profilePage={props.state.profilePage}
-              dispatch={props.dispatch} />}
+                      profilePage={props.state.profilePage}
+                      dispatch={props.dispatch}
+                    />}
           />
           <Route
             path='/dialogs/*'
-            element={<Dialogs 
-             messagesPage={props.state.messagesPage}
-             dispatch={props.dispatch} />}
+            element={<Dialogs
+                      messagesPage={props.state.messagesPage}
+                      dispatch={props.dispatch}
+                    />}
           />
           <Route
             path='/news'
@@ -67,7 +70,7 @@ const App = (props) => {
         </Routes>
       </div>
     </div>
-  )
+  );
 };
 
 export default App;

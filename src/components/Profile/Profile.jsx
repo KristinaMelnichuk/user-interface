@@ -1,11 +1,11 @@
-import './Profile.css';
+import styles from'./Profile.module.css';
 import MyPosts from './MyPosts/MyPosts.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 import Groups from './Groups/Groups.jsx';
 
 const Profile = (props) => {
   return (
-    <div className='commonProfile'>
+    <div className={styles.commonProfile}>
       <ProfileInfo />
       <MyPosts
         posts={props.profilePage.posts}
