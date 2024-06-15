@@ -1,7 +1,7 @@
-import styles from'./Profile.module.css';
+import styles from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
-import Groups from './Groups/Groups.jsx';
+import FriendsList from './FriendsList/FriendsList.jsx';
 
 const Profile = (props) => {
   return (
@@ -10,8 +10,9 @@ const Profile = (props) => {
       <MyPosts
         posts={props.profilePage.posts}
         newPostText={props.profilePage.newPostText}
-        dispatch={props.dispatch}/> 
-     <Groups />
+        dispatch={props.dispatch} />
+      <FriendsList 
+        friends={props.profilePage.friendsList} />
     </div>
   )
 }

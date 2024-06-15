@@ -1,7 +1,8 @@
-import { type } from '@testing-library/user-event/dist/type/index.js';
 import c from './MyPosts.module.css';
 import Post from './Post/Post.jsx';
 import React from 'react';
+import { addPostActionCreate, onPostChangeActionCreate } from '../../../redux/state.js';
+
 
 const MyPosts = (props) => {
   let postsElements = props.posts.map(p => <Post message={p.message} likes={p.likes} />);
@@ -9,12 +10,12 @@ const MyPosts = (props) => {
   let newElementPost = React.createRef();
 
   let addPost = () => {
-    props.dispatch({ type: 'ADD-POST' });
+    props.dispatch(addPostActionCreate());
   };
 
   let onPostChange = () => {
     let text = newElementPost.current.value;
-    let action = { type: 'UPDATE-NEW-POST-TEXT', newText: text };
+    let action = onPostChangeActionCreate(text);
     props.dispatch(action);
   };
 

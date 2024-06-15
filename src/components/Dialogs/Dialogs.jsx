@@ -2,22 +2,21 @@ import React from "react";
 import styles from "./Dialogs.module.css";
 import Message from "./Message/Message.jsx";
 import DialogItem from "./DialogItem/DialogItem.jsx";
+import { addMessageActionCreate, onMessageChangeActionCreate } from "../../redux/state.js";
 
 const Dialogs = (props) => {
-    // Создаем элементы для диалогов и сообщений
     const dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem sender={d.sender} avatar={d.avatar} id={d.id} />);
     const messagesElements = props.messagesPage.messages.map(m => <Message message={m.messages} />);
-    
-    // Создаем ссылку на текстовое поле
+
     const newMessageRef = React.createRef();
 
     const addMessage = () => {
-        props.dispatch({ type: 'ADD-MESSAGE' });
+        props.dispatch(addMessageActionCreate());
     };
 
-    const onMessageChange = () => {
-        const text = newMessageRef.current.value;
-        const action = { type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text }
+    let onMessageChange = () => {
+        let text = newMessageRef.current.value;
+        let action = onMessageChangeActionCreate(text);
         props.dispatch(action);
     };
 
@@ -34,7 +33,7 @@ const Dialogs = (props) => {
                     <textarea
                         onChange={onMessageChange}
                         ref={newMessageRef}
-                        value={props.newMessageText} 
+                        value={props.newMessageText}
                     />
                 </div>
                 <div>

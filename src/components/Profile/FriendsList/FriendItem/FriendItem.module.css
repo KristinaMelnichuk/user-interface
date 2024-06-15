@@ -1,0 +1,28 @@
+.friendItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background-color 0.3s; /* Добавляем плавный переход для изменения цвета фона */
+}
+
+.friendItem:hover {
+    background-color:  rgb(48, 47, 47); /* Изменяем цвет фона при наведении */
+}
+
+.friendItem img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.friendItem span {
+    color: white;
+    font-size: 12px;
+}
