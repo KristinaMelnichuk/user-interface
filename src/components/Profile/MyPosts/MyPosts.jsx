@@ -1,22 +1,19 @@
 import c from './MyPosts.module.css';
 import Post from './Post/Post.jsx';
 import React from 'react';
-import { addPostActionCreate, onPostChangeActionCreate } from '../../../redux/state.js';
-
 
 const MyPosts = (props) => {
-  let postsElements = props.posts.map(p => <Post message={p.message} likes={p.likes} />);
+  const postsElements = props.posts.map(p => <Post message={p.message} likes={p.likes} />);
+  
+  const newElementPost = React.createRef();
 
-  let newElementPost = React.createRef();
-
-  let addPost = () => {
-    props.dispatch(addPostActionCreate());
+  const handleAddPost  = () => {
+    props.onAddPost();
   };
 
-  let onPostChange = () => {
-    let text = newElementPost.current.value;
-    let action = onPostChangeActionCreate(text);
-    props.dispatch(action);
+  const onPostChange = () => {
+    const text = newElementPost.current.value;
+    props.updateNewPostText(text);
   };
 
   return (
@@ -30,7 +27,7 @@ const MyPosts = (props) => {
             value={props.newPostText} />
         </div>
         <div>
-          <button onClick={addPost}>Опубликовать</button>
+          <button onClick={handleAddPost }>Опубликовать</button>
         </div>
       </div>
       <div className={c.posts}>
