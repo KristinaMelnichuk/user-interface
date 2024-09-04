@@ -16,7 +16,7 @@ const initialState = {
     newPostText: ''
 };
 
-const reduceProfilePage = (state = initialState, action) => {
+const reducerProfilePage = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             const newPost = {
@@ -47,4 +47,4 @@ export const updateNewPostTextActionCreate = (text) => ({
     type: UPDATE_NEW_POST_TEXT, newText: text
 })
 
-export default reduceProfilePage;
+export default reducerProfilePage;

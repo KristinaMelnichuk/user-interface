@@ -4,10 +4,6 @@ import Message from "./Message/Message.jsx";
 import DialogItem from "./DialogItem/DialogItem.jsx";
 
 const Dialogs = (props) => {
-    if (!props.dialogItems || !props.messageItems) {
-        return <div>Loading...</div>;
-    }
-    
     const dialogsElements = props.dialogItems.map(d => <DialogItem sender={d.sender} avatar={d.avatar} id={d.id} />);
     const messagesElements = props.messageItems.map(m => <Message message={m.messages} />);
 

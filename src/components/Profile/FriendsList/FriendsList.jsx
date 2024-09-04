@@ -3,7 +3,7 @@ import styles from './FriendsList.module.css';
 import { NavLink } from 'react-router-dom';
 
 const FriendsList = (props) => {
-    const friendsElements = props.friendsList.map(f => <FriendItem name={f.name} avatar={f.avatar} id={f.id} />);
+    const friendsElements = props.friendsList.map(f => <FriendItem name={f.name} avatar={f.avatar} id={f.id} key={f.id} />);
     
     return (
         <div className={styles.listGrid}>

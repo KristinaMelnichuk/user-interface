@@ -17,7 +17,7 @@ const initialState = {
     newMessageBody: ''
 }
 
-const reduceMessagesPage = (state = initialState, action) => {
+const reducerMessagesPage = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE: {
             const newMessage = {
@@ -48,4 +48,4 @@ export const updateNewMessageBodyActionCreate = (body) => ({
 })
 
 
-export default reduceMessagesPage;
+export default reducerMessagesPage;

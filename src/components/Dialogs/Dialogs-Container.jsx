@@ -1,4 +1,3 @@
-
 import { addMessageActionCreate, updateNewMessageBodyActionCreate } from "../../redux/reducer-messagesPage.js";
 import Dialogs from "./Dialogs.jsx";
 import { connect } from "react-redux";
@@ -21,6 +20,6 @@ const mapDispatchToProps = (dispatch) => { //чтобы передать фун�
         },
     }
 }
-
+ 
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 export default DialogsContainer;
