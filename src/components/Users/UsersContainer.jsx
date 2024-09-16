@@ -1,13 +1,13 @@
-import Users from './Users.jsx';
 import { connect } from 'react-redux';
-import { deletedUsersAC, addUsersAC, setUsersAC } from '../../redux/reducer-usersPage.js';
+import Users from './Users'; // Убедитесь, что путь к файлу правильный
+import { deletedUsersAC, addUsersAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC } from '../../redux/reducer-usersPage.js';
 
 const mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
+        currentPage: state.usersPage.currentPage || 1,
     }
 }
 
@@ -23,6 +23,18 @@ const mapDispatchToProps = (dispatch) => {
 
         setUsers: (users) => {
             dispatch(setUsersAC(users));
+        },
+
+        setCurrentPage: (pageNumber) => {
+            dispatch(setCurrentPageAC(pageNumber));
+        },
+
+        setTotalUsersCount: (totalUsersCount) => {
+            dispatch(setTotalUsersCountAC(totalUsersCount));
+        },
+
+        onPageChange: (pageNumber) => {
+            dispatch(setCurrentPageAC(pageNumber));
         },
     }
 }

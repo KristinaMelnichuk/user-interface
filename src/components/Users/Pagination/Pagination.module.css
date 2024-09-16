@@ -1,0 +1,7 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрирует элементы по горизонтали */
+    flex-wrap: wrap; /* Позволяет переносить элементы на следующую строку, если не помещаются */
+}
+
