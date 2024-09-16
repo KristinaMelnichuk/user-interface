@@ -1,0 +1,16 @@
+/* Стили для кнопки */
+.button {
+    background-color: #615b5c; 
+    border: none; 
+    color: white; 
+    padding: 5px 10px; 
+    font-size: 14px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+/* Стили для кнопки при наведении */
+.button:hover {
+    background-color: #7f7c7c; 
+}

@@ -1,0 +1,48 @@
+/* Контейнер для информации о друге */
+.info {
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid rgb(60, 58, 58);
+    border-radius: 8px;
+    background-color: rgb(36, 35, 35);
+    margin-bottom: 10px;
+}
+
+/* Стили для аватара друга */
+.photos {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    grid-column: 1;
+}
+
+/* Контейнер для имени и локации друга */
+.details {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-column: 2;
+}
+
+/* Стили для имени друга */
+.name {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Стили для ссылки с именем друга */
+.name a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Стили для отображения локации друга */
+.location {
+    font-size: 14px;
+    color: #6c757d;
+}
