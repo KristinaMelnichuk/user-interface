@@ -9,7 +9,7 @@ import DialogsContainer from './components/Dialogs/Dialogs-Container.jsx';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
-import UsersContainer from './components/Users/UsersContainer.jsx';
+import UsersContainer from './components/UsersContainer/UsersContainer.jsx';
 import Photo from './components/Photo/Photo.jsx';
 import Video from './components/Video/Video.jsx';
 import Services from './components/Service/Services.jsx';

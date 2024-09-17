@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Users from './Users'; // Убедитесь, что путь к файлу правильный
+import UsersList from './UsersList/UsersList.jsx';
 import { deletedUsersAC, addUsersAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC } from '../../redux/reducer-usersPage.js';
 
 const mapStateToProps = (state) => {
@@ -39,5 +39,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersList);
 export default UsersContainer;

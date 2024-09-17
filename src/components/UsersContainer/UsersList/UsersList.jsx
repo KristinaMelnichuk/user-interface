@@ -3,7 +3,7 @@ import UsersInfo from './UsersInfo/UsersInfo';
 import axios from 'axios';
 import Pagination from './Pagination/Pagination.jsx';
 
-class Users extends Component {
+class UsersList extends Component {
     componentDidMount() {
         // Инициализация страницы и размера страницы
         this.loadUsers(this.props.currentPage || 1);
@@ -23,7 +23,7 @@ class Users extends Component {
     }
 
     render() {
-        const users = this.props.users.map(u => (
+        const usersList = this.props.users.map(u => (
             <UsersInfo
                 name={u.name}
                 photos={u.photos}
@@ -47,11 +47,11 @@ class Users extends Component {
                     />
                 </div>
                 <div>
-                    {users}
+                    {usersList}
                 </div>
             </div>
         );
     }
 }
 
-export default Users;
+export default UsersList;
