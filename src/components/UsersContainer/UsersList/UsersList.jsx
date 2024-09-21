@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import UsersInfo from './UsersInfo/UsersInfo';
 import axios from 'axios';
 import Pagination from './Pagination/Pagination.jsx';
-
 class UsersList extends Component {
     componentDidMount() {
         // Инициализация страницы и размера страницы
@@ -30,8 +29,8 @@ class UsersList extends Component {
                 id={u.id}
                 key={u.id}
                 buttonUsers={u.buttonUsers}
-                addUsers={this.props.addUsers}
-                deletedUsers={this.props.deletedUsers}
+                follow={this.props.follow}
+                unfollow={this.props.unfollow}
             />
         ));
 

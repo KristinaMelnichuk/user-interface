@@ -1,7 +1,7 @@
 import styles from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 import MyPostsContainer from './MyPosts/MyPosts-Container.jsx';
-import FriendsListContainer from './FriendsList/FriensList-Container.jsx';
+import FriendsListContainer from './FriendsListContainer/FriensListContainer.jsx';
 
 const Profile = () => {
   return (
