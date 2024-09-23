@@ -1,0 +1,26 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Пространство между кнопками */
+}
+
+.pageButton {
+    background-color: #615b5c;
+    border: none;
+    color: white;
+    padding: 5px 15px; /* Увеличение размера кнопки */
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pageButton:hover {
+    background-color: #7f7c7c;
+}
+
+.pageButton:disabled {
+    background-color: #4a494a;
+    cursor: not-allowed;
+}

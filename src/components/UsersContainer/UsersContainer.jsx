@@ -1,6 +1,40 @@
 import { connect } from 'react-redux';
-import UsersList from './UsersList/UsersList.jsx';
 import { unfollowAC, followAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC } from '../../redux/reducer-usersPage.js';
+import React, { Component } from 'react';
+import axios from 'axios';
+import Users from './Users/Users.jsx';
+
+class UsersAPIContainer extends Component {
+    componentDidMount() {
+        // Инициализация страницы и размера страницы
+        this.loadUsers(this.props.currentPage || 1);
+    }
+
+    loadUsers = (pageNumber) => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.setCurrentPage(pageNumber);
+            });
+    }
+
+    handlePageChange = (pageNumber) => {
+        this.loadUsers(pageNumber);
+    }
+
+    render() {
+        return <Users
+            users={this.props.users}
+            follow={this.props.follow}
+            unfollow={this.props.unfollow}
+            totalUsersCount={this.props.totalUsersCount}
+            pageSize={this.props.pageSize}
+            currentPage={this.props.currentPage}
+            onPageChange={this.handlePageChange}
+        />
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -39,5 +73,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersList);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIContainer);
 export default UsersContainer;

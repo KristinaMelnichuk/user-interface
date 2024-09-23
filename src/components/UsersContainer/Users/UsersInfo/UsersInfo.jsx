@@ -8,7 +8,7 @@ const UsersInfo = (props) => {
 
     return (
         <div className={styles.info}>
-            <img className={styles.photos} src={props.photos.small} />
+            <img className={styles.photos} src={props.photos.small} alt='' />
             <div className={styles.details}>
                 <div className={styles.name}>
                     <NavLink to={path}>{props.name}</NavLink>
