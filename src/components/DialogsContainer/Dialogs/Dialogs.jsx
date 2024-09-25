@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./Dialogs.module.css";
-import Message from "./Message/Message.jsx";
-import DialogItem from "./DialogItem/DialogItem.jsx";
+import React from 'react';
+import styles from './Dialogs.module.css';
+import Message from './Message/Message.jsx';
+import DialogItem from './DialogItem/DialogItem.jsx';
 
 const Dialogs = (props) => {
     const dialogsElements = props.dialogItems.map(d => <DialogItem sender={d.sender} avatar={d.avatar} id={d.id} />);

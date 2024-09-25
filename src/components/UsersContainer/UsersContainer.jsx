@@ -3,6 +3,7 @@ import { unfollowAC, followAC, setUsersAC, setCurrentPageAC, setTotalUsersCountA
 import React, { Component } from 'react';
 import axios from 'axios';
 import Users from './Users/Users.jsx';
+import preloaderSvg from '../../assets/image/preloaderSvg.gif';
 
 class UsersAPIContainer extends Component {
     componentDidMount() {
@@ -24,15 +25,18 @@ class UsersAPIContainer extends Component {
     }
 
     render() {
-        return <Users
-            users={this.props.users}
-            follow={this.props.follow}
-            unfollow={this.props.unfollow}
-            totalUsersCount={this.props.totalUsersCount}
-            pageSize={this.props.pageSize}
-            currentPage={this.props.currentPage}
-            onPageChange={this.handlePageChange}
-        />
+        return <>
+            {this.props.isFetching ? <img src={preloaderSvg} /> : null}
+            <Users
+                users={this.props.users}
+                follow={this.props.follow}
+                unfollow={this.props.unfollow}
+                totalUsersCount={this.props.totalUsersCount}
+                pageSize={this.props.pageSize}
+                currentPage={this.props.currentPage}
+                onPageChange={this.handlePageChange}
+            />
+        </>
     }
 }
 
@@ -42,6 +46,7 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage || 1,
+        isFetching: state.usersPage.isFetching,
     }
 }
 

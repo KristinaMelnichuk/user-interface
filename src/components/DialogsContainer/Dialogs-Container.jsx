@@ -1,6 +1,6 @@
-import { addMessageActionCreate, updateNewMessageBodyActionCreate } from "../../redux/reducer-messagesPage.js";
-import Dialogs from "./Dialogs.jsx";
-import { connect } from "react-redux";
+import { addMessageActionCreate, updateNewMessageBodyActionCreate } from '../../redux/reducer-messagesPage.js';
+import Dialogs from './Dialogs/Dialogs.jsx';
+import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => { // Чтобы передать данные из состояния в компонент
     return {

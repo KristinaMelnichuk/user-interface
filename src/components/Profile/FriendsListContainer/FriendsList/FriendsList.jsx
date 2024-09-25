@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import FriendsDisplay from "./FriendsDisplay/FriendsDisplay.jsx";
+import FriendsDisplay from './FriendsDisplay/FriendsDisplay.jsx';
 
 class FriendsList extends Component {
     componentDidMount() {

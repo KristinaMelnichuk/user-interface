@@ -1,7 +1,7 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT';
 
 const initialState = {
@@ -9,6 +9,7 @@ const initialState = {
     pageSize: 7, 
     totalUsersCount: 0,
     currentPage: 1, 
+    isFetching: false,
 };
 
 const reducerUsersPage = (state = initialState, action) => {

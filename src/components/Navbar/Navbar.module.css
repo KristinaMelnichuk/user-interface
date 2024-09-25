@@ -12,20 +12,32 @@ header {
 }
 
 .nav .item {
-  height: 40px;
-  font-size: 14.1px;
-}
-
-.nav .item a {
+  display: flex;
+  align-items: center;
+  padding: 11px;
+  height: 10px;
+  font-size: 13.5px;
   color: rgb(255, 255, 255);
   text-decoration: none;
 }
 
-.nav .item :hover {
+.nav .item:hover {
   background-color: rgba(67, 67, 68, 0.423);
+  border-radius: 5px;
 }
 
-.item img {
-  width: 22.5px;
+.iconText {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Отступ между иконкой и текстом */
+}
+
+.iconText img {
+  width: 18.5px;
   margin-bottom: -5px;
+}
+
+.nav .item span {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
 }

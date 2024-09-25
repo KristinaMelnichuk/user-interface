@@ -1,7 +1,7 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import reducerMessagesPage from "./reducer-messagesPage";
-import reducerProfilePage from "./reducer-profilePage";
-import reducerUsersPage from "./reducer-usersPage";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import reducerMessagesPage from './reducer-messagesPage';
+import reducerProfilePage from './reducer-profilePage';
+import reducerUsersPage from './reducer-usersPage';
 
 const reducers = combineReducers({
     profilePage: reducerProfilePage,
