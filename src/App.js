@@ -23,9 +23,9 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Navigate to='/profile' />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/news' element={<News />} />
           <Route path='/friends' element={<UsersContainer />} />
           <Route path='/dialogs/*' element={<DialogsContainer />} />
-          <Route path='/news' element={<News />} />
           <Route path='/photo' element={<Photo />} />
           <Route path='/music' element={<Music />} />
           <Route path='/video' element={<Video />} />

@@ -2,20 +2,18 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 const initialState = {
     users: [],
-    pageSize: 7, 
-    totalUsersCount: 0,
-    currentPage: 1, 
+    pageSize: 5,
+    currentPage: 1,
     isFetching: false,
 };
 
 const reducerUsersPage = (state = initialState, action) => {
     switch (action.type) {
-        // Обработка действия FOLLOW (подписка на пользователя)
-        case FOLLOW:
+        case FOLLOW: // Обработка действия FOLLOW (подписка на пользователя)
             return {
                 ...state,
                 users: state.users.map(user => {
@@ -26,8 +24,7 @@ const reducerUsersPage = (state = initialState, action) => {
                 })
             };
 
-        // Обработка действия UNFOLLOW (отписка от пользователя)
-        case UNFOLLOW:
+        case UNFOLLOW:  // Обработка действия UNFOLLOW (отписка от пользователя)
             return {
                 ...state,
                 users: state.users.map(user => {
@@ -38,35 +35,25 @@ const reducerUsersPage = (state = initialState, action) => {
                 })
             };
 
-        // Обработка действия SET_USERS (установка списка пользователей)    
         case SET_USERS:
-            return {
-                ...state,
-                users: action.users
-            };
+            return { ...state, users: [...state.users, ...action.users] };
 
-        // Обработка действия SET_CURRENT_PAGE (установка текущей страницы)   
         case SET_CURRENT_PAGE:
-            return {
-                ...state,
-                currentPage: action.currentPage
-            };
+            return { ...state, currentPage: action.currentPage };
 
-        // Обработка действия TOTAL_USERS_COUNT (установка общего количества пользователей)    
-        case TOTAL_USERS_COUNT:
-            return {
-                ...state,
-                totalUsersCount: action.count
-            };
-        default:
-            return state;
+        case TOGGLE_IS_FETCHING:
+            return { ...state, isFetching: action.isFetching };
+
+        default: return state;
     }
 };
 
 export const followAC = (userId) => ({ type: FOLLOW, userId });
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
+
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
 export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-export const setTotalUsersCountAC = (totalUsersCount) => ({ type: TOTAL_USERS_COUNT, count: totalUsersCount });
+
+export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export default reducerUsersPage;

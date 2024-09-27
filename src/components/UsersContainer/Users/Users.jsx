@@ -1,6 +1,6 @@
 import React from 'react';
 import UsersInfo from './UsersInfo/UsersInfo';
-import Pagination from './Pagination/Pagination';
+import styles from './Users.module.css';
 
 const Users = (props) => {
     const usersList = props.users.map(u => (
@@ -15,21 +15,16 @@ const Users = (props) => {
         />
     ));
 
-    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     return (
         <div>
+            <div>{usersList}</div>
             <div>
-                <Pagination
-                    totalPages={pagesCount}
-                    currentPage={props.currentPage}
-                    onPageChange={props.onPageChange}
-                />
-            </div>
-            <div>
-                {usersList}
+                <button className={styles.button} onClick={props.loadMoreUsers}>
+                    Показать пользователей
+                </button>
             </div>
         </div>
     );
-
 }
+
 export default Users;

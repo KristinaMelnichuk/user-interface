@@ -1,48 +1,35 @@
 /* Контейнер для информации о друге */
 .info {
     display: grid;
-    grid-template-columns: 50px 1fr auto;
+    grid-template-columns: 40px 1fr auto; /* Уменьшен размер аватара */
     grid-template-rows: auto;
     align-items: center;
-    gap: 15px;
-    padding: 10px;
+    gap: 10px; /* Уменьшен отступ между элементами */
+    padding: 5px; /* Уменьшен внутренний отступ */
     border: 1px solid rgb(60, 58, 58);
     border-radius: 8px;
     background-color: rgb(36, 35, 35);
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Уменьшен нижний отступ */
 }
 
 /* Стили для аватара друга */
 .photos {
-    width: 50px;
-    height: 50px;
+    width: 40px; /* Уменьшен размер аватара */
+    height: 40px; /* Уменьшен размер аватара */
     border-radius: 50%;
     grid-column: 1;
 }
 
-/* Контейнер для имени и локации друга */
-.details {
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-column: 2;
-}
-
 /* Стили для имени друга */
 .name {
-    font-size: 16px;
+    font-size: 14px; /* Уменьшен размер шрифта */
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: bold;
 }
 
-/* Стили для ссылки с именем друга */
-.name a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Стили для отображения локации друга */
+/* Стили для отображения локации друга (если нужно) */
 .location {
-    font-size: 14px;
+    font-size: 12px; /* Уменьшен размер шрифта */
     color: #6c757d;
 }

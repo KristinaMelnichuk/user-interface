@@ -3,8 +3,8 @@
     background-color: #615b5c; 
     border: none; 
     color: white; 
-    padding: 5px 10px; 
-    font-size: 14px; 
+    padding: 4px 8px; /* Уменьшен внутренний отступ кнопки */
+    font-size: 12px; /* Уменьшен размер шрифта */
     border-radius: 5px; 
     cursor: pointer; 
     transition: background-color 0.3s ease; 
