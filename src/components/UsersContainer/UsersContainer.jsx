@@ -3,7 +3,7 @@ import { unfollow, follow, setUsers, setCurrentPage, toggleIsFetching, resetUser
 import React, { Component } from 'react';
 import axios from 'axios';
 import Users from './Users/Users.jsx';
-import preloaderSvg from '../../assets/image/preloaderSvg.gif';
+import Preloader from './PreloaderSvg/Preloader.jsx';
 
 class UsersAPIContainer extends Component {
     loadUsers = (pageNumber) => {
@@ -34,7 +34,7 @@ class UsersAPIContainer extends Component {
         return (
             <>
                 {this.props.isFetching ? (
-                    <img src={preloaderSvg} alt='loading...' />
+                    <Preloader />
                 ) : (
                     <Users
                         users={this.props.users}

@@ -8,11 +8,10 @@ class FriendsList extends Component {
     }
 
     loadFriends = () => {
-        // Здесь исправляем запрос
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`, {
             withCredentials: true, // если нужно передавать куки
             headers: {
-                "API-KEY": "your-api-key-here" // если требуется API ключ
+                "API-KEY": "your-api-key-here" 
             }
         })
         .then(response => {
