@@ -31,7 +31,7 @@ const reducerMessagesPage = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreate = () => ({ type: SEND_MESSAGE });
-export const updateNewMessageBodyActionCreate = (body) => ({ vtype: UPDATE_NEW_MESSAGE_BODY, newBody: body });
+export const addMessage = () => ({ type: SEND_MESSAGE });
+export const updateNewMessageBody = (body) => ({ vtype: UPDATE_NEW_MESSAGE_BODY, newBody: body });
 
 export default reducerMessagesPage;

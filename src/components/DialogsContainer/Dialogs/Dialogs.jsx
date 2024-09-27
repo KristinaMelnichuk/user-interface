@@ -4,18 +4,18 @@ import Message from './Message/Message.jsx';
 import DialogItem from './DialogItem/DialogItem.jsx';
 
 const Dialogs = (props) => {
-    const dialogsElements = props.dialogItems.map(d => <DialogItem sender={d.sender} avatar={d.avatar} id={d.id} />);
+    const dialogsElements = props.dialogItems.map(d => <DialogItem sender={d.sender} avatar={d.avatar} id={d.id} key={d.id} />);
     const messagesElements = props.messageItems.map(m => <Message message={m.messages} />);
 
     const newMessageRef = React.createRef();
 
     const handleAddMessage = () => {
-        props.onAddMessage();
+        props.addMessage();
     };
 
     const handleMessageChange = () => {
         const body = newMessageRef.current.value;
-        props.onUpdateMessageBody(body);
+        props.updateNewMessageBody(body);
     };
 
     return (

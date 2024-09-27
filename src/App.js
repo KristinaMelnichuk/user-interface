@@ -13,6 +13,8 @@ import UsersContainer from './components/UsersContainer/UsersContainer.jsx';
 import Photo from './components/Photo/Photo.jsx';
 import Video from './components/Video/Video.jsx';
 import Services from './components/Service/Services.jsx';
+import Calls from './components/Calls/Calls.jsx';
+import Communities from './components/Communities/Communities.jsx';
 
 const App = () => {
   return (
@@ -24,8 +26,10 @@ const App = () => {
           <Route path='/' element={<Navigate to='/profile' />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/news' element={<News />} />
-          <Route path='/friends' element={<UsersContainer />} />
           <Route path='/dialogs/*' element={<DialogsContainer />} />
+          <Route path='/calls' element={<Calls />} />
+          <Route path='/friends' element={<UsersContainer />} />
+          <Route path='/Communities' element={<Communities />} />
           <Route path='/photo' element={<Photo />} />
           <Route path='/music' element={<Music />} />
           <Route path='/video' element={<Video />} />

@@ -48,10 +48,10 @@ const reducerProfilePage = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreate = () => ({ type: ADD_POST });
-export const updateNewPostTextActionCreate = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+export const addPost = () => ({ type: ADD_POST });
+export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
 
-export const setFriendsAC = (friends) => ({ type: SET_FRIENDS, friends });
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setFriends = (friends) => ({ type: SET_FRIENDS, friends });
+export const setUsers = (users) => ({ type: SET_USERS, users });
 
 export default reducerProfilePage;
