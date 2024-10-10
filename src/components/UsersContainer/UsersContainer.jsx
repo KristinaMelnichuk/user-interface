@@ -3,7 +3,7 @@ import { unfollow, follow, setUsers, setCurrentPage, toggleIsFetching, resetUser
 import React, { Component } from 'react';
 import axios from 'axios';
 import Users from './Users/Users.jsx';
-import Preloader from './PreloaderSvg/Preloader.jsx';
+import Preloader from '../../assets/Preloader.jsx';
 
 class UsersAPIContainer extends Component {
     loadUsers = (pageNumber) => {
@@ -15,7 +15,6 @@ class UsersAPIContainer extends Component {
             .then(response => {
                 this.props.setUsers(response.data.items); // Добавляем новых пользователей
                 this.props.toggleIsFetching(false); // Скрыть прелоадер
-
                 window.scroll(0, scrollPosition); // Возвращаем пользователя на то место, где он нажал кнопку
             });
     }

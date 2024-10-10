@@ -2,9 +2,8 @@ import React from 'react';
 import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import Header from './components/Header/Header.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
-import Profile from './components/Profile/Profile.jsx';
+import ProfileContainer from './components/ProfileContainer/ProfileContainer.jsx';
 import DialogsContainer from './components/DialogsContainer/Dialogs-Container.jsx';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
@@ -15,16 +14,18 @@ import Video from './components/Video/Video.jsx';
 import Services from './components/Service/Services.jsx';
 import Calls from './components/Calls/Calls.jsx';
 import Communities from './components/Communities/Communities.jsx';
+import HeaderContainer from './components/Header/HeaderContainer/HeaderContainer.jsx';
 
 const App = () => {
   return (
     <div className="app-wrapper">
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <div className="app-wrapper-content">
         <Routes>
           <Route path='/' element={<Navigate to='/profile' />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile' element={<ProfileContainer />} />
+          <Route path='/profile/:userId' element={<ProfileContainer />} />
           <Route path='/news' element={<News />} />
           <Route path='/dialogs/*' element={<DialogsContainer />} />
           <Route path='/calls' element={<Calls />} />

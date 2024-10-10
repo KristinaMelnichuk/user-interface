@@ -3,8 +3,13 @@ import Post from './Post/Post.jsx';
 import React from 'react';
 
 const MyPosts = (props) => {
-  const postsElements = props.posts.map(p => <Post message={p.message} likes={p.likes} key={p.id} />);
-  
+  const postsElements = props.posts.map(p =>
+    <Post
+      message={p.message}
+      likes={p.likes}
+      key={p.id}
+    />);
+
   const newElementPost = React.createRef();
 
   const handleAddPost = () => {
@@ -27,7 +32,7 @@ const MyPosts = (props) => {
             value={props.newPostText} />
         </div>
         <div>
-          <button onClick={handleAddPost }>Опубликовать</button>
+          <button onClick={handleAddPost}>Опубликовать</button>
         </div>
       </div>
       <div className={c.posts}>

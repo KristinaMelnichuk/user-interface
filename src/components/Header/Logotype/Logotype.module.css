@@ -1,0 +1,17 @@
+.logotypeImage img {
+    width: 1.9vw;
+    margin-left: 6.8%;
+    margin-bottom: -0.8%;
+  }
+
+.logotypeText {
+    margin-left: 9.5%;
+    margin-top: -1.9%;
+    font-size: 145%;
+    color: white;
+}
+
+.logotypeText a {
+    text-decoration: none;
+    color: white;
+}

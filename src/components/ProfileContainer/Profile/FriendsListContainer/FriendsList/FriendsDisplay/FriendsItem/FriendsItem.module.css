@@ -8,6 +8,10 @@
     transition: background-color 0.3s;
 }
 
+.friendItem a {
+    text-decoration: none;
+}
+
 .friendItem:hover {
     background-color: rgb(48, 47, 47);
 }

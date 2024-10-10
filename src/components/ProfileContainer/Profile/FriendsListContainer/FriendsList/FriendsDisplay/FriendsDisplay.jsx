@@ -1,11 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import FriendsItem from './FriendsItem/FriendsItem.jsx';
+import FriendsItem from './FriendsItem/FriendsItem';
 import styles from './FriendsDisplay.module.css';
 
 const FriendsDisplay = (props) => {
     const friendsCount = props.friendsList.length;
-    // Генерация элементов списка
     const friendsElements = props.friendsList.map(f => (
         <FriendsItem name={f.name} avatar={f.avatar} id={f.id} key={f.id} />
     ));

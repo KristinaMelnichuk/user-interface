@@ -1,26 +1,16 @@
-.header {
-  grid-area: h;
-  background-color: rgb(36, 35, 35);
-  border: 1px solid rgb(46, 44, 44);
-  border-radius: 1px;
-  width: 100%;
-
+.headerContent {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Логотип слева, блок входа справа */
+  align-items: center;
+  padding: 0 9.5%; /* Отступы по бокам */
 }
 
-.header img {
-  width: 1.9%;
-  margin-left: 7.5%;
-  margin-bottom: -0.8%;
-}
-
-.header .logoVk {
-  margin-left: 9.5%;
-  margin-top: -1.4%;
+.loginBlock {
   font-size: 145%;
   color: white;
 }
 
-.logoVk a {
+.loginBlock a {
   text-decoration: none;
   color: white;
 }

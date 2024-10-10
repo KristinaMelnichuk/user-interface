@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import FriendsDisplay from './FriendsDisplay/FriendsDisplay.jsx';
+import FriendsDisplay from './FriendsDisplay/FriendsDisplay';
 
 class FriendsList extends Component {
     componentDidMount() {
@@ -9,17 +9,17 @@ class FriendsList extends Component {
 
     loadFriends = () => {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`, {
-            withCredentials: true, // если нужно передавать куки
+            withCredentials: true,
             headers: {
-                "API-KEY": "your-api-key-here" 
+                "API-KEY": "your-api-key-here"
             }
         })
-        .then(response => {
-            this.props.setFriends(response.data.items); // Установка списка друзей через props
-        })
-        .catch(error => {
-            console.error("Ошибка при загрузке друзей:", error);
-        });
+            .then(response => {
+                this.props.setFriends(response.data.items);
+            })
+            .catch(error => {
+                console.error("Ошибка при загрузке друзей:", error);
+            });
     }
 
     render() {
