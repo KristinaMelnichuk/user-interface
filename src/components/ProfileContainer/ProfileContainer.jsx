@@ -9,7 +9,7 @@ const ProfileContainer = (props) => {
     const { userId } = useParams(); // Извлекаем userId из параметров маршрута
 
     useEffect(() => {
-        const id = userId || 2; // Если userId отсутствует, используем значение по умолчанию
+        const id = userId || 31728; // Если userId отсутствует, используем значение по умолчанию
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${id}`)
             .then(response => {
                 props.setUserProfile(response.data);
