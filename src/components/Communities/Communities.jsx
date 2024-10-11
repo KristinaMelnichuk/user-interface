@@ -1,8 +1,6 @@
 const Communities = () => {
     return (
-        <div>
-            Сообщества
-        </div>
+        <div></div>
     )
 };
 

@@ -1,8 +1,6 @@
 const Music = () => {
     return (
-        <div>
-           Музыка
-        </div>
+        <div></div>
     )
 }
 export default Music;

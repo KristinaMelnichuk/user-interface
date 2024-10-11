@@ -1,8 +1,6 @@
 const Settings = () => {
     return (
-        <div>
-            Настройки
-        </div>
+        <div></div>
     )
 }
 export default Settings;

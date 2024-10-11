@@ -1,15 +1,24 @@
 /* Контейнер для информации о друге */
 .info {
     display: grid;
-    grid-template-columns: 40px 1fr auto; /* Уменьшен размер аватара */
+    grid-template-columns: 40px 1fr auto; /* Размер аватара и прочие элементы */
     grid-template-rows: auto;
     align-items: center;
-    gap: 10px; /* Уменьшен отступ между элементами */
-    padding: 5px; /* Уменьшен внутренний отступ */
+    gap: 10px; /* Отступ между элементами */
+    padding: 5px; /* Внутренний отступ */
     border: 1px solid rgb(60, 58, 58);
     border-radius: 8px;
     background-color: rgb(36, 35, 35);
+    margin: 0 auto; /* Центрирование контейнера */
     margin-bottom: 8px; /* Уменьшен нижний отступ */
+    max-width: calc(100% - 300px); /* Уменьшение ширины на 150 пикселей с каждой стороны */
+    margin-left: 55px; /* Негативный левый отступ для смещения влево */
+    transition: background-color 0.3s; /* Плавный переход для фона */
+}
+
+/* Эффект при наведении */
+.info:hover {
+    background-color: rgb(48, 47, 47); /* Цвет при наведении */
 }
 
 /* Стили для аватара друга */

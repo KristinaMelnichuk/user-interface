@@ -1,21 +1,110 @@
-.profiletxt {
-    padding: 10px;
-}
-
 .profilegrid {
-    grid-area: profilegrid;
+    display: grid;
+    grid-template-areas: 
+        "banner"
+        "profile-content"
+        "contacts";
+    gap: 20px;
     border: 1px solid rgb(60, 58, 58);
     border-radius: 20px;
     background-color: rgb(36, 35, 35);
-    height: auto;
+    padding: 20px;
+    color: #fff; /* Цвет текста */
 }
 
-.profilegrid img {
-    width: 100%;
-    height: 100%;
-    border-radius: 19px;
+.banner {
+    grid-area: banner; /* Область для баннера */
+    border-radius: 20px;
+    overflow: hidden; /* Чтобы изображение не выходило за границы */
+}
+
+.banner img {
+    width: 100%; /* Заполняем всю ширину */
+    height: auto; /* Сохраняем пропорции */
+}
+
+.profileContent {
+    display: grid; /* Используем грид для размещения аватарки и информации */
+    grid-template-columns: 120px 1fr; /* Первая колонка для аватарки, вторая для информации */
+    grid-gap: 10px; /* Промежуток между аватаркой и текстом */
+    align-items: start; /* Выравнивание по верхнему краю */
+    grid-area: profile-content; /* Устанавливаем область для контента профиля */
+}
+
+.photosSmall {
+    display: grid; /* Используем грид для аватарки и имени */
+    grid-template-rows: auto 1fr; /* Одна строка для аватарки, одна для имени */
+    justify-items: center; /* Центрируем содержимое */
 }
 
 .photosSmall img {
-    width: 20%;
+    width: 100px; /* Размер аватарки */
+    height: 100px; /* Размер аватарки */
+    border-radius: 50%; /* Круглая форма */
+    object-fit: cover; /* Для корректного отображения */
+    border: 3px solid #fff; /* Белая рамка вокруг аватарки */
+}
+
+.name {
+    font-size: 20px; /* Размер шрифта для имени */
+    font-weight: bold; /* Жирный шрифт для выделения */
+    margin: 0; /* Убираем отступы */
+    text-align: center; /* Центрируем текст */
+}
+
+.profileInfo {
+    display: grid; /* Используем грид для размещения информации */
+    grid-template-rows: auto auto auto; /* Одна строка для каждого элемента информации */
+}
+
+.profileInfo p {
+    margin: 5px 0; /* Отступы для текста */
+    font-size: 16px; /* Размер шрифта */
+    line-height: 1.5; /* Междустрочный интервал */
+}
+
+.contacts {
+    grid-area: contacts; /* Область для контактов */
+}
+
+.contacts ul {
+    list-style-type: none; /* Убираем маркеры */
+    padding-left: 0; /* Убираем отступ слева */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.contacts ul li {
+    margin-bottom: 10px; /* Отступы для каждого элемента списка */
+    font-size: 14px; /* Размер шрифта для контактов */
+}
+
+.contacts ul li a {
+    color: #61dafb; /* Цвет ссылки */
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: color 0.3s; /* Плавный переход цвета */
+}
+
+.contacts ul li a:hover {
+    color: #fff; /* Цвет при наведении */
+}
+
+/* Адаптивная стилизация для мобильных устройств */
+@media (max-width: 768px) {
+    .profilegrid {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .photosSmall img {
+        width: 80px; /* Уменьшаем размер аватарки на мобильных */
+        height: 80px; /* Уменьшаем размер аватарки на мобильных */
+    }
+
+    .name {
+        font-size: 18px; /* Уменьшаем размер имени на мобильных */
+    }
+
+    .profileInfo p, .contacts ul li {
+        font-size: 14px; /* Уменьшаем размер шрифта для мобильных */
+    }
 }

@@ -8,7 +8,7 @@ header {
   grid-area: n;
   background-color: rgba(26, 25, 25, 0);
   padding: 5%;
-  margin-left: auto;
+  margin-left: 80%;
 }
 
 .nav .item {

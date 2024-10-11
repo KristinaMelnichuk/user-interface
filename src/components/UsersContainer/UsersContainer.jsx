@@ -11,7 +11,9 @@ class UsersAPIContainer extends Component {
 
         this.props.toggleIsFetching(true); // Показать прелоадер
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {}, {
+            withCredentials: true,
+        })
             .then(response => {
                 this.props.setUsers(response.data.items); // Добавляем новых пользователей
                 this.props.toggleIsFetching(false); // Скрыть прелоадер

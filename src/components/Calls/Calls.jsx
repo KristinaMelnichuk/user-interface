@@ -1,8 +1,6 @@
 const Calls = () => {
     return (
-        <div>
-            Звонки
-        </div>
+        <div></div>
     )
 };
 

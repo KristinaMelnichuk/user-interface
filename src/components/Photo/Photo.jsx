@@ -1,8 +1,6 @@
 const Photo = () => {
     return (
-        <div>
-            Фотографии
-        </div>
+        <div></div>
     )
 }
 export default Photo;

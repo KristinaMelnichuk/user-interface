@@ -1,8 +1,6 @@
 const Video = () => {
     return (
-        <div>
-            Видео
-        </div>
+        <div></div>
     )
 }
 export default Video;

@@ -10,7 +10,8 @@
 }
 
 .app-wrapper-content {
+  grid-area: c;
   color: white;
   border-radius: 19px;
-  grid-area: c;
+  margin-left: 40px;
 }
