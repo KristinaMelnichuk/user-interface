@@ -1,7 +1,6 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
-const RESET_USERS = 'RESET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
@@ -19,47 +18,45 @@ const reducerUsersPage = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.userId) {
-                        return { ...user, buttonUsers: false };
+                        return { ...user, followed: true };
                     }
                     return user;
                 })
             };
-
         case UNFOLLOW:  // Обработка действия UNFOLLOW (отписка от пользователя)
             return {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.userId) {
-                        return { ...user, buttonUsers: true };
+                        return { ...user, followed: false };
                     }
                     return user;
                 })
             };
-
-        case SET_USERS:
-            if (state.currentPage === 1) {  // Если текущая страница первая, перезаписываем пользователей
-                return { ...state, users: action.users }; // Перезаписываем пользователей
-            } else {
-                return { ...state, users: [...state.users, ...action.users] }; // Добавляем к существующим
-            }
-
+            case SET_USERS: // Объединяем существующих пользователей с новыми и фильтруем дубликаты по id
+                const uniqueUsers = [...state.users, ...action.users].filter((user, index, self) =>
+                    index === self.findIndex((u) => u.id === user.id) // Оставляем только уникальных по id
+                );
+                return { // Возвращаем новое состояние с уникальными пользователями
+                    ...state, // сохраняем предыдущее состояние
+                    users: uniqueUsers // обновляем список пользователей без дубликатов
+                };
         case SET_CURRENT_PAGE:
-            return { ...state, currentPage: action.currentPage };
-
-
-        case SET_CURRENT_PAGE:
-            return { ...state, currentPage: action.currentPage };
-
+            return {
+                ...state,
+                currentPage: action.currentPage
+            };
         case TOGGLE_IS_FETCHING:
-            return { ...state, isFetching: action.isFetching };
-
+            return {
+                ...state,
+                isFetching: action.isFetching
+            };
         default: return state;
     }
 };
 
 export const follow = (userId) => ({ type: FOLLOW, userId });
 export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
-export const resetUsers = () => ({ type: RESET_USERS });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });

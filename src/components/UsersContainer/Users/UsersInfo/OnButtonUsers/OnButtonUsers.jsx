@@ -43,9 +43,9 @@ const OnButtonFriend = ({ usersInfo, follow, unfollow }) => {
 
     return (
         <div>
-            {usersInfo.buttonUsers
-                ? <button className={styles.button} onClick={handleFollow}>Подписаться</button>
-                : <button className={styles.button} onClick={handleUnfollow}>Отписаться</button>
+            {usersInfo.followed
+                ? <button className={styles.button} onClick={handleUnfollow}>Отписаться</button>
+                : <button className={styles.button} onClick={handleFollow}>Подписаться</button>
             }
         </div>
     )

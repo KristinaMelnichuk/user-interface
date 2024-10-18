@@ -9,7 +9,7 @@ const Users = (props) => {
             photos={u.photos}
             id={u.id}
             key={u.id}
-            buttonUsers={u.buttonUsers}
+            followed={u.followed}
             follow={props.follow}
             unfollow={props.unfollow}
         />

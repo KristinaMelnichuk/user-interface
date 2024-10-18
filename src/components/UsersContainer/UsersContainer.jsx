@@ -1,34 +1,30 @@
 import { connect } from 'react-redux';
-import { unfollow, follow, setUsers, setCurrentPage, toggleIsFetching, resetUsers } from '../../redux/reducer-usersPage.js';
+import { unfollow, follow, setUsers, setCurrentPage, toggleIsFetching } from '../../redux/reducer-usersPage.js';
 import React, { Component } from 'react';
-import axios from 'axios';
 import Users from './Users/Users.jsx';
 import Preloader from '../../assets/Preloader.jsx';
+import { usersAPI } from '../../api/api.js';
 
 class UsersAPIContainer extends Component {
+    componentDidMount() {
+        this.loadUsers(this.props.currentPage); // Первая загрузка
+    }
+
     loadUsers = (pageNumber) => {
         const scrollPosition = window.scrollY;
-
         this.props.toggleIsFetching(true); // Показать прелоадер
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {}, {
-            withCredentials: true,
-        })
-            .then(response => {
-                this.props.setUsers(response.data.items); // Добавляем новых пользователей
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+                this.props.setUsers(data.items); // Добавляем новых пользователей
                 this.props.toggleIsFetching(false); // Скрыть прелоадер
                 window.scroll(0, scrollPosition); // Возвращаем пользователя на то место, где он нажал кнопку
             });
     }
 
-    componentDidMount() {
-        this.loadUsers(this.props.currentPage); // Загружаем пользователей при первой загрузке страницы
-    }
-
     loadMoreUsers = () => {
         const nextPage = this.props.currentPage + 1;
-        this.loadUsers(nextPage);
-        this.props.setCurrentPage(nextPage);
+        this.props.setCurrentPage(nextPage); // Сначала обновляем текующую страницу
+        this.loadUsers(nextPage); // Затем загружаем данные для следующей страницы   
     }
 
     render() {
@@ -60,7 +56,6 @@ const UsersContainer = connect(mapStateToProps, {
     follow,
     unfollow,
     setUsers,
-    resetUsers,
     setCurrentPage,
     toggleIsFetching,
 })(UsersAPIContainer);
