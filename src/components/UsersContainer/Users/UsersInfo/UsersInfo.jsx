@@ -22,7 +22,10 @@ const UsersInfo = (props) => {
                     <OnButtonUsers
                         usersInfo={props}
                         follow={props.follow}
-                        unfollow={props.unfollow} />
+                        unfollow={props.unfollow}
+                        toggleFollowingProgress={props.toggleFollowingProgress}
+                        followingInProgress={props.followingInProgress}
+                    />
                 </div>
             </div>
         </div>
