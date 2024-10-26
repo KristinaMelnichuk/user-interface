@@ -1,45 +1,37 @@
 import { connect } from 'react-redux';
-import { unfollow, follow, setUsers, setCurrentPage, toggleIsFetching, toggleFollowingProgress } from '../../redux/reducer-usersPage.js';
+import {  toggleFollowingProgress, getUsers, loadMoreUsers, follow, unfollow } from '../../redux/reducer-usersPage.js';
 import React, { Component } from 'react';
 import Users from './Users/Users.jsx';
 import Preloader from '../../assets/Preloader.jsx';
-import { usersAPI } from '../../api/api.js';
 
+// Главный контейнер для пользователей
 class UsersAPIContainer extends Component {
     componentDidMount() {
-        this.loadUsers(this.props.currentPage); // Первая загрузка
-    }
+        // Загружаем первую страницу пользователей при монтировании компонента
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+    };
 
     loadUsers = (pageNumber) => {
-        const scrollPosition = window.scrollY;
-        this.props.toggleIsFetching(true); // Показать прелоадер
-
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items); // Добавляем новых пользователей
-            this.props.toggleIsFetching(false); // Скрыть прелоадер
-            window.scroll(0, scrollPosition); // Возвращаем пользователя на то место, где он нажал кнопку
-        });
-    }
-
-    loadMoreUsers = () => {
-        const nextPage = this.props.currentPage + 1;
-        this.props.setCurrentPage(nextPage); // Сначала обновляем текующую страницу
-        this.loadUsers(nextPage); // Затем загружаем данные для следующей страницы   
-    }
+        this.props.getUsers(pageNumber, this.props.pageSize); // Загрузка пользователей для текущей страницы
+    };
 
     render() {
+        // Упрощаем доступ к пропсам
+        const {isFetching, users, follow, unfollow, loadMoreUsers, toggleFollowingProgress, followingInProgress} = this.props;
+
+         // Отображаем прелоадер, пока идет загрузка, иначе - список пользователей
         return (
             <>
-                {this.props.isFetching ? (
+                {isFetching ? (
                     <Preloader />
                 ) : (
                     <Users
-                        users={this.props.users}
-                        follow={this.props.follow}
-                        unfollow={this.props.unfollow}
-                        loadMoreUsers={this.loadMoreUsers} // Передаем функцию загрузки новых пользователей
-                        toggleFollowingProgress={this.props.toggleFollowingProgress}
-                        followingInProgress={this.props.followingInProgress}
+                        users={users}
+                        follow={follow}
+                        unfollow={unfollow}
+                        loadMoreUsers={loadMoreUsers}
+                        toggleFollowingProgress={toggleFollowingProgress}
+                        followingInProgress={followingInProgress}
                     />
                 )}
             </>
@@ -55,13 +47,13 @@ const mapStateToProps = (state) => ({
     followingInProgress: state.usersPage.followingInProgress,
 });
 
+// Подключение к Redux
 const UsersContainer = connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
-    setCurrentPage,
-    toggleIsFetching,
     toggleFollowingProgress,
+    getUsers,
+    loadMoreUsers,
 })(UsersAPIContainer);
 
 export default UsersContainer;

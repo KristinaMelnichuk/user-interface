@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -66,8 +68,8 @@ const reducerUsersPage = (state = initialState, action) => {
 };
 
 // action creators
-export const follow = (userId) => ({ type: FOLLOW, userId });
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
@@ -76,5 +78,64 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
     isFetching,
     userId,
 });
+
+// thunk creators
+export const getUsers = (pageNumber, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true)); // Показать прелоадер
+        usersAPI.getUsers(pageNumber, pageSize)
+            .then(data => {
+                dispatch(setUsers(data.items)); // Добавляем новых пользователей
+                dispatch(toggleIsFetching(false)); // Скрыть прелоадер
+            });
+    }
+}
+
+export const loadMoreUsers = () => {
+    return (dispatch, getState) => {
+        const state = getState(); // Получаем текущее состояние Redux
+        const nextPage = state.usersPage.currentPage + 1; // Рассчитываем следующую страницу
+        const pageSize = state.usersPage.pageSize; // Получаем размер страницы
+
+        dispatch(setCurrentPage(nextPage)); // Обновляем текущую страницу
+        dispatch(getUsers(nextPage, pageSize)); // Загружаем пользователей для следующей страницы
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId)); //Дизейблим кнопку
+        usersAPI.follow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followSuccess(userId)); // Обновление состояния в Redux
+                }
+            })
+            .catch(error => {
+                console.error("Ошибка подписки:", error);
+            })
+            .finally(() => {
+                dispatch(toggleFollowingProgress(false, userId)); // Разблокируем кнопку
+            });
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingProgress(true, userId)); //Дизейблим кнопку
+        usersAPI.unfollow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unfollowSuccess(userId)); // Обновление состояния в Redux
+                }
+            })
+            .catch(error => {
+                console.error("Ошибка отписки:", error);
+            })
+            .finally(() => {
+                dispatch(toggleFollowingProgress(false, userId)); // Разблокируем кнопку
+            });
+    }
+}
 
 export default reducerUsersPage;

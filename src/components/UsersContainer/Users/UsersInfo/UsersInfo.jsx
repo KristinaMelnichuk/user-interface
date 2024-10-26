@@ -4,8 +4,10 @@ import styles from './UsersInfo.module.css';
 import { NavLink } from 'react-router-dom';
 
 const UsersInfo = (props) => {
+    const { follow, unfollow, toggleFollowingProgress, followingInProgress, isFollowed } = props;
+
     return (
-        <div className={styles.userContainer}> {/* Новый контейнер для пользователей */}
+        <div className={styles.userContainer}>
             <div className={styles.info}>
                 <NavLink to={'/profile/' + props.id}>
                     <img className={styles.photos} src={props.photos.small} alt='' />
@@ -20,11 +22,12 @@ const UsersInfo = (props) => {
                 </div>
                 <div>
                     <OnButtonUsers
-                        usersInfo={props}
-                        follow={props.follow}
-                        unfollow={props.unfollow}
-                        toggleFollowingProgress={props.toggleFollowingProgress}
-                        followingInProgress={props.followingInProgress}
+                        userId={props.id}
+                        isFollowed={isFollowed}
+                        follow={follow} // Передаем экшен для подписки
+                        unfollow={unfollow} // Передаем экшен для отписки
+                        toggleFollowingProgress={toggleFollowingProgress}
+                        followingInProgress={followingInProgress}
                     />
                 </div>
             </div>

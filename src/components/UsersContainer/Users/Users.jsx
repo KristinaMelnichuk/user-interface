@@ -3,25 +3,28 @@ import UsersInfo from './UsersInfo/UsersInfo';
 import styles from './Users.module.css';
 
 const Users = (props) => {
-    const usersList = props.users.map(u => (
+
+const {users, unfollow, follow, toggleFollowingProgress, followingInProgress, loadMoreUsers} = props;
+
+    const usersList = users.map(user => (
         <UsersInfo
-            name={u.name}
-            photos={u.photos}
-            id={u.id}
-            key={u.id}
-            followed={u.followed}
-            follow={props.follow}
-            unfollow={props.unfollow}
-            toggleFollowingProgress={props.toggleFollowingProgress}
-            followingInProgress={props.followingInProgress}
+            {...user} // name={user.name}, photos={user.photos},  id={user.id}
+            key={user.id}
+            isFollowed={user.followed}
+            follow={follow}
+            unfollow={unfollow}
+            toggleFollowingProgress={toggleFollowingProgress}
+            followingInProgress={followingInProgress}
         />
     ));
 
     return (
         <div>
-            <div>{usersList}</div>
+            {usersList}
             <div>
-                <button className={styles.button} onClick={props.loadMoreUsers}>
+                <button
+                    className={styles.button}
+                    onClick={loadMoreUsers}>
                     Показать пользователей
                 </button>
             </div>
