@@ -14,7 +14,8 @@ import Video from './components/Video/Video.jsx';
 import Services from './components/Service/Services.jsx';
 import Calls from './components/Calls/Calls.jsx';
 import Communities from './components/Communities/Communities.jsx';
-import HeaderContainer from './components/Header/HeaderContainer/HeaderContainer.jsx';
+import HeaderContainer from './components/HeaderContainer/HeaderContainer.jsx';
+import Login from './components/Login/Login.jsx';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route path='/video' element={<Video />} />
           <Route path='/services' element={<Services />} />
           <Route path='/settings' element={<Settings />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </div>
     </div>

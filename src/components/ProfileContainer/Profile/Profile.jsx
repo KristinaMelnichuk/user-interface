@@ -4,10 +4,11 @@ import MyPostsContainer from './MyPostsContainer/MyPostsContainer.jsx';
 import FriendsListContainer from './FriendsListContainer/FriendsListContainer.jsx';
 
 const Profile = (props) => {
+  const { profile } = props;
   return (
     <div className={styles.commonProfile}>
-      <ProfileInfo profile={props.profile} />
-      <MyPostsContainer profile={props.profile} />
+      <ProfileInfo profile={profile} />
+      <MyPostsContainer profile={profile} />
       <FriendsListContainer />
     </div>
   );

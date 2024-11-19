@@ -8,7 +8,7 @@ const instance = axios.create({
     },
 });
 
-// Определяем API для работы с пользователем
+// API для работы с Users
 export const usersAPI = {
     async getUsers(pageNumber, pageSize) {
             const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
@@ -21,4 +21,18 @@ export const usersAPI = {
     unfollow(userId) {
         return instance.delete(`follow/${userId}`)
     },
-}
+};
+
+// API для работы с Profile
+export const profileAPI = {
+    getUserProfile(userId) {
+        return instance.get(`profile/${userId}`);
+    },
+};
+
+// API для работы с Auth
+export const authAPI = {
+    getAuthUserData() {
+        return instance.get(`auth/me`);
+    },
+};

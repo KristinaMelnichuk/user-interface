@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
-import {  toggleFollowingProgress, getUsers, loadMoreUsers, follow, unfollow } from '../../redux/reducer-usersPage.js';
+import { getUsers, loadMoreUsers, follow, unfollow } from '../../redux/reducer-usersPage.js';
 import React, { Component } from 'react';
 import Users from './Users/Users.jsx';
 import Preloader from '../../assets/Preloader.jsx';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect.js';
 
 // Главный контейнер для пользователей
 class UsersAPIContainer extends Component {
     componentDidMount() {
-        // Загружаем первую страницу пользователей при монтировании компонента
+        // Загружаем первую страницу пользователей
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     };
 
@@ -16,8 +17,7 @@ class UsersAPIContainer extends Component {
     };
 
     render() {
-        // Упрощаем доступ к пропсам
-        const {isFetching, users, follow, unfollow, loadMoreUsers, toggleFollowingProgress, followingInProgress} = this.props;
+        const {isFetching, users, follow, unfollow, loadMoreUsers, followingInProgress} = this.props;
 
          // Отображаем прелоадер, пока идет загрузка, иначе - список пользователей
         return (
@@ -30,7 +30,6 @@ class UsersAPIContainer extends Component {
                         follow={follow}
                         unfollow={unfollow}
                         loadMoreUsers={loadMoreUsers}
-                        toggleFollowingProgress={toggleFollowingProgress}
                         followingInProgress={followingInProgress}
                     />
                 )}
@@ -38,6 +37,8 @@ class UsersAPIContainer extends Component {
         );
     }
 }
+
+const AuthRedirectComponent = withAuthRedirect(UsersAPIContainer);
 
 const mapStateToProps = (state) => ({
     users: state.usersPage.users,
@@ -51,9 +52,8 @@ const mapStateToProps = (state) => ({
 const UsersContainer = connect(mapStateToProps, {
     follow,
     unfollow,
-    toggleFollowingProgress,
     getUsers,
     loadMoreUsers,
-})(UsersAPIContainer);
+})(AuthRedirectComponent);
 
 export default UsersContainer;

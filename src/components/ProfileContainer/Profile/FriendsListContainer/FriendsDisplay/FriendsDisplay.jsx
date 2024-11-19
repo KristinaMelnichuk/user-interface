@@ -5,8 +5,13 @@ import styles from './FriendsDisplay.module.css';
 
 const FriendsDisplay = (props) => {
     const friendsCount = props.friendsList.length;
+
     const friendsElements = props.friendsList.map(f => (
-        <FriendsItem name={f.name} avatar={f.avatar} id={f.id} key={f.id} />
+        <FriendsItem
+            name={f.name}
+            avatar={f.avatar}
+            id={f.id}
+            key={f.id} />
     ));
 
     return (

@@ -4,7 +4,7 @@ import styles from './UsersInfo.module.css';
 import { NavLink } from 'react-router-dom';
 
 const UsersInfo = (props) => {
-    const { follow, unfollow, toggleFollowingProgress, followingInProgress, isFollowed } = props;
+    const { follow, unfollow, followingInProgress, isFollowed } = props;
 
     return (
         <div className={styles.userContainer}>
@@ -26,7 +26,6 @@ const UsersInfo = (props) => {
                         isFollowed={isFollowed}
                         follow={follow} // Передаем экшен для подписки
                         unfollow={unfollow} // Передаем экшен для отписки
-                        toggleFollowingProgress={toggleFollowingProgress}
                         followingInProgress={followingInProgress}
                     />
                 </div>
