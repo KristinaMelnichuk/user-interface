@@ -11,8 +11,8 @@ const instance = axios.create({
 // API для работы с Users
 export const usersAPI = {
     async getUsers(pageNumber, pageSize) {
-            const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
-            return response.data;
+        const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
+        return response.data;
     },
 
     follow(userId) {
@@ -34,5 +34,12 @@ export const profileAPI = {
 export const authAPI = {
     getAuthUserData() {
         return instance.get(`auth/me`);
+    },
+};
+
+// API для работы с FriendsListProfile
+export const friendsListAPI = {
+    async getUsers(pageSize) {
+        return instance.get(`users?count=${pageSize}`);
     },
 };

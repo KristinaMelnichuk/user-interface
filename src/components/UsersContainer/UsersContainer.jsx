@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Users from './Users/Users.jsx';
 import Preloader from '../../assets/Preloader.jsx';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect.js';
+import { compose } from 'redux';
 
 // Главный контейнер для пользователей
 class UsersAPIContainer extends Component {
@@ -17,9 +18,9 @@ class UsersAPIContainer extends Component {
     };
 
     render() {
-        const {isFetching, users, follow, unfollow, loadMoreUsers, followingInProgress} = this.props;
+        const { isFetching, users, follow, unfollow, loadMoreUsers, followingInProgress } = this.props;
 
-         // Отображаем прелоадер, пока идет загрузка, иначе - список пользователей
+        // Отображаем прелоадер, пока идет загрузка, иначе - список пользователей
         return (
             <>
                 {isFetching ? (
@@ -38,8 +39,6 @@ class UsersAPIContainer extends Component {
     }
 }
 
-const AuthRedirectComponent = withAuthRedirect(UsersAPIContainer);
-
 const mapStateToProps = (state) => ({
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
@@ -48,12 +47,14 @@ const mapStateToProps = (state) => ({
     followingInProgress: state.usersPage.followingInProgress,
 });
 
-// Подключение к Redux
-const UsersContainer = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    getUsers,
-    loadMoreUsers,
-})(AuthRedirectComponent);
+const UsersContainer = compose(
+    connect(mapStateToProps, {
+        follow,
+        unfollow,
+        getUsers,
+        loadMoreUsers
+    }),
+    withAuthRedirect,
+)(UsersAPIContainer);
 
 export default UsersContainer;

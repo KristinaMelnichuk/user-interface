@@ -1,4 +1,4 @@
-import { profileAPI } from '../api/api';
+import { profileAPI, friendsListAPI } from '../api/api';
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
@@ -64,13 +64,26 @@ export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 
 // thunk creators
 export const fetchUserProfile = (userId) => {
-  return (dispatch) => {
+    return (dispatch) => {
         profileAPI.getUserProfile(userId)
             .then(response => {
                 dispatch(setUserProfile(response.data));
             })
             .catch(error => {
                 console.error("Ошибка загрузки профиля", error);
+            });
+    }
+}
+
+
+export const fetchLoadFriends = (pageSize) => {
+    return (dispatch) => {
+        friendsListAPI.getUsers(pageSize)
+            .then(response => {
+                dispatch(setFriends(response.data.items));
+            })
+            .catch(error => {
+                console.error("Ошибка при загрузке друзей:", error);
             });
     }
 }

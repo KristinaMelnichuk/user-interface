@@ -1,6 +1,8 @@
 import { addMessage, updateNewMessageBody } from '../../redux/reducer-messagesPage.js';
-import AuthRedirectComponent from './Dialogs/Dialogs.jsx';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect.js';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import Dialogs from './Dialogs/Dialogs.jsx';
 
 const mapStateToProps = (state) => ({
     newMessageBody: state.messagesPage.newMessageBody,
@@ -8,9 +10,12 @@ const mapStateToProps = (state) => ({
     messageItems: state.messagesPage.messages,
 });
 
-const DialogsContainer = connect(mapStateToProps, {
-    addMessage,
-    updateNewMessageBody,
-})(AuthRedirectComponent);
+const DialogsContainer = compose(
+    connect(mapStateToProps, {
+        addMessage,
+        updateNewMessageBody
+    }),
+    withAuthRedirect,
+)(Dialogs);
 
 export default DialogsContainer;

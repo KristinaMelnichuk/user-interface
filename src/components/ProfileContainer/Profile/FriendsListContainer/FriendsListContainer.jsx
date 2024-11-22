@@ -1,29 +1,15 @@
 import { connect } from 'react-redux';
 import { setFriends } from '../../../../redux/reducer-profilePage.js';
 import React, { Component } from 'react';
-import axios from 'axios';
 import FriendsDisplay from './FriendsDisplay/FriendsDisplay';
-
-const configAPI = {
-    withCredentials: true,
-    headers: {
-        "API-KEY": "your-api-key-here"
-    }
-}
-
+import { fetchLoadFriends } from '../../../../redux/reducer-profilePage.js';
 class FriendsListAPI extends Component {
     componentDidMount() {
         this.loadFriends();
     };
 
     loadFriends = () => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`, { configAPI })
-            .then(response => {
-                this.props.setFriends(response.data.items)
-            })
-            .catch(error => {
-                console.error("Ошибка при загрузке друзей:", error);
-            });
+        this.props.fetchLoadFriends(this.props.pageSize)
     }
 
     render() {
@@ -37,6 +23,7 @@ const mapStateToProps = (state) => ({
 
 const FriendsListContainer = connect(mapStateToProps, {
     setFriends,
+    fetchLoadFriends
 })(FriendsListAPI);
 
 export default FriendsListContainer;
