@@ -1,10 +1,11 @@
-import { profileAPI, friendsListAPI } from '../api/api';
+import { profileAPI, friendsListAPI, statusAPI } from '../api/api';
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_FRIENDS = 'SET_FRIENDS'; // Новый экшен для установки списка друзей
 const SET_USERS = 'SET_USERS';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 const initialState = {
     users: [], // Список пользователей
@@ -12,6 +13,7 @@ const initialState = {
     profile: null,
     posts: [],
     newPostText: '',
+    status: '',
 };
 
 const reducerProfilePage = (state = initialState, action) => {
@@ -44,6 +46,11 @@ const reducerProfilePage = (state = initialState, action) => {
                 ...state,
                 users: action.users
             };
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
+            };
         case SET_USER_PROFILE:
             return {
                 ...state,
@@ -60,6 +67,7 @@ export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newTex
 export const setFriends = (friends) => ({ type: SET_FRIENDS, friends });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const setStatus = (status) => ({ type: SET_STATUS, status });
 
 
 // thunk creators
@@ -84,6 +92,32 @@ export const fetchLoadFriends = (pageSize) => {
             })
             .catch(error => {
                 console.error("Ошибка при загрузке друзей:", error);
+            });
+    }
+}
+
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        statusAPI.getStatus(userId)
+            .then(response => {
+                dispatch(setStatus(response.data));
+            })
+            .catch(error => {
+                console.error("Ошибка при обработке статуса:", error);
+            });
+    }
+}
+
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        statusAPI.updateStatus(status)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setStatus(status));
+                }
+            })
+            .catch(error => {
+                console.error("Ошибка при обновлении статуса:", error);
             });
     }
 }

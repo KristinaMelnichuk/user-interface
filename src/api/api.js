@@ -43,3 +43,12 @@ export const friendsListAPI = {
         return instance.get(`users?count=${pageSize}`);
     },
 };
+
+export const statusAPI = {
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`);
+    },
+    updateStatus(status) {
+        return instance.put(`status`, { status: status });
+    },
+};

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Dialogs.module.css';
 import Message from './Message/Message.jsx';
 import DialogItem from './DialogItem/DialogItem.jsx';
+import MessageSubmitForm from './MessageSubmitForm/MessageSubmitForm.jsx';
 
 const Dialogs = (props) => {
     const dialogsElements = props.dialogItems.map(d =>
@@ -18,17 +19,6 @@ const Dialogs = (props) => {
             key={m.id}
         />);
 
-    const newMessageRef = React.createRef();
-
-    const handleAddMessage = () => {
-        props.addMessage();
-    };
-
-    const handleMessageChange = () => {
-        const body = newMessageRef.current.value;
-        props.updateNewMessageBody(body);
-    };
-
     return (
         <div className={styles.dialogsandMessages}>
             <div>
@@ -39,14 +29,10 @@ const Dialogs = (props) => {
                     {messagesElements}
                 </div>
                 <div>
-                    <textarea
-                        onChange={handleMessageChange}
-                        ref={newMessageRef}
-                        value={props.newMessageBody}
+                    <MessageSubmitForm
+                        updateNewMessageBody={props.updateNewMessageBody}
+                        addMessage={props.addMessage}
                     />
-                </div>
-                <div>
-                    <button onClick={handleAddMessage}>Отправить</button>
                 </div>
             </div>
         </div>
