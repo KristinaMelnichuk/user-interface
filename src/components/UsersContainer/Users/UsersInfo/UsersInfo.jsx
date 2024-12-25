@@ -4,34 +4,38 @@ import styles from './UsersInfo.module.css';
 import { NavLink } from 'react-router-dom';
 
 const UsersInfo = (props) => {
-    const { follow, unfollow, followingInProgress, isFollowed } = props;
+    const { id, name, photos, follow, unfollow, followingInProgress, isFollowed } = props;
 
     return (
-        <div className={styles.userContainer}>
-            <div className={styles.info}>
-                <NavLink to={'/profile/' + props.id}>
-                    <img className={styles.photos} src={props.photos.small} alt='' />
-                </NavLink>
-                <div className={styles.details}>
-                    <div className={styles.name}>
-                        {props.name}
-                    </div>
-                    <div className={styles.location}>
-                        {/* Здесь можно отобразить локацию, если она есть */}
-                    </div>
-                </div>
-                <div>
-                    <OnButtonUsers
-                        userId={props.id}
-                        isFollowed={isFollowed}
-                        follow={follow} // Передаем экшен для подписки
-                        unfollow={unfollow} // Передаем экшен для отписки
-                        followingInProgress={followingInProgress}
+        <div className={styles.info}>
+            <section>
+                <NavLink to={`/profile/${id}`}>
+                    <img
+                        className={styles.photos}
+                        src={photos.small}
+                        alt=''
                     />
-                </div>
-            </div>
+                </NavLink>
+            </section>
+
+            <section className={styles.name}>
+                {name}
+            </section>
+
+            {/* Локация, если будет добавлена */}
+            <section className={styles.location} />
+
+            <section>
+                <OnButtonUsers
+                    userId={props.id}
+                    isFollowed={isFollowed}
+                    follow={follow} // Передаем экшен для подписки
+                    unfollow={unfollow} // Передаем экшен для отписки
+                    followingInProgress={followingInProgress}
+                />
+            </section>
         </div>
     );
-}
+};
 
 export default UsersInfo;

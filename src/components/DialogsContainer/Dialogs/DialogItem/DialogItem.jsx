@@ -5,13 +5,14 @@ const DialogItem = (props) => {
     const path = "/dialogs/" + props.id;
 
     return (
-        <div className={styles.dialogItem}>
-            <div className={styles.dialogElementName}>
+        <div className={styles.item}>
+            <section className={styles.name}>
                 <NavLink to={path}>{props.sender}</NavLink>
-            </div>
-            <div className={styles.dialogElementImage}>
-                <img src={props.avatar}></img>
-            </div>
+            </section>
+
+            <section className={styles.image}>
+                <img src={props.avatar} />
+            </section>
         </div>
     )
 }

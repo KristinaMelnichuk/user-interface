@@ -30,13 +30,13 @@ const Dialogs = (props) => {
                 </div>
                 <div>
                     <MessageSubmitForm
-                        updateNewMessageBody={props.updateNewMessageBody}
                         addMessage={props.addMessage}
+                        updateNewMessageBody={props.updateNewMessageBody}
                     />
                 </div>
             </div>
         </div>
     )
-}
+};
 
 export default Dialogs;

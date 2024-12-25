@@ -8,47 +8,39 @@ const instance = axios.create({
     },
 });
 
-// API для работы с Users
-export const usersAPI = {
-    async getUsers(pageNumber, pageSize) {
-        const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
-        return response.data;
+// Общий объект API
+export const api = {
+    users: {
+        async getUsers(pageNumber, pageSize) {
+            const response = await instance.get(`users?page=${pageNumber}&count=${pageSize}`);
+            return response.data;
+        },
+        follow(userId) {
+            return instance.post(`follow/${userId}`);
+        },
+        unfollow(userId) {
+            return instance.delete(`follow/${userId}`);
+        },
     },
-
-    follow(userId) {
-        return instance.post(`follow/${userId}`, {})
+    profile: {
+        getUserProfile(userId) {
+            return instance.get(`profile/${userId}`);
+        },
+        getStatus(userId) {
+            return instance.get(`profile/status/${userId}`);
+        },
+        updateStatus(status) {
+            return instance.put(`profile/status`, { status });
+        },
     },
-    unfollow(userId) {
-        return instance.delete(`follow/${userId}`)
+    auth: {
+        getAuthUserData() {
+            return instance.get(`auth/me`);
+        },
     },
-};
-
-// API для работы с Profile
-export const profileAPI = {
-    getUserProfile(userId) {
-        return instance.get(`profile/${userId}`);
-    },
-};
-
-// API для работы с Auth
-export const authAPI = {
-    getAuthUserData() {
-        return instance.get(`auth/me`);
-    },
-};
-
-// API для работы с FriendsListProfile
-export const friendsListAPI = {
-    async getUsers(pageSize) {
-        return instance.get(`users?count=${pageSize}`);
-    },
-};
-
-export const statusAPI = {
-    getStatus(userId) {
-        return instance.get(`profile/status/${userId}`);
-    },
-    updateStatus(status) {
-        return instance.put(`status`, { status: status });
+    friendsList: {
+        async getUsers(pageSize) {
+            return instance.get(`users?count=${pageSize}`);
+        },
     },
 };

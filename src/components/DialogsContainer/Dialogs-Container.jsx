@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 const DialogsContainer = compose(
     connect(mapStateToProps, {
         addMessage,
-        updateNewMessageBody
+        updateNewMessageBody,
     }),
     withAuthRedirect,
 )(Dialogs);

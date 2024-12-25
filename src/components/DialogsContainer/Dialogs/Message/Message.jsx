@@ -1,4 +1,5 @@
 import styles from './Message.module.css';
+import React from 'react';
 
 const Message = (props) => {
     return (
@@ -6,6 +7,6 @@ const Message = (props) => {
             {props.message}
         </div>
     )
-}
+};
 
 export default Message;

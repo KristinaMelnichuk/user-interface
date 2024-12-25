@@ -1,4 +1,4 @@
-import { usersAPI } from '../api/api';
+import { api } from '../api/api';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -6,6 +6,18 @@ const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+
+// action creators
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+export const toggleFollowingProgress = (isFetching, userId) => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    isFetching,
+    userId,
+});
 
 const initialState = {
     users: [],
@@ -67,23 +79,11 @@ const reducerUsersPage = (state = initialState, action) => {
     }
 };
 
-// action creators
-export const followSuccess = (userId) => ({ type: FOLLOW, userId });
-export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
-export const setUsers = (users) => ({ type: SET_USERS, users });
-export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
-export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
-export const toggleFollowingProgress = (isFetching, userId) => ({
-    type: TOGGLE_IS_FOLLOWING_PROGRESS,
-    isFetching,
-    userId,
-});
-
 // thunk creators
 export const getUsers = (pageNumber, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true)); // Показать прелоадер
-        usersAPI.getUsers(pageNumber, pageSize)
+        api.users.getUsers(pageNumber, pageSize)
             .then(data => {
                 dispatch(setUsers(data.items)); // Добавляем новых пользователей
                 dispatch(toggleIsFetching(false)); // Скрыть прелоадер
@@ -105,7 +105,7 @@ export const loadMoreUsers = () => {
 export const follow = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId)); //Дизейблим кнопку
-        usersAPI.follow(userId)
+        api.users.follow(userId)
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(followSuccess(userId)); // Обновление состояния в Redux
@@ -123,7 +123,7 @@ export const follow = (userId) => {
 export const unfollow = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId)); //Дизейблим кнопку
-        usersAPI.unfollow(userId)
+        api.users.unfollow(userId)
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(unfollowSuccess(userId)); // Обновление состояния в Redux
@@ -135,7 +135,7 @@ export const unfollow = (userId) => {
             .finally(() => {
                 dispatch(toggleFollowingProgress(false, userId)); // Разблокируем кнопку
             });
-    }
+    }   
 }
 
 export default reducerUsersPage;

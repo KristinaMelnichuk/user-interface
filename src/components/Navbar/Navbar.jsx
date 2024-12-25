@@ -18,11 +18,16 @@ const navItems = [
 const Navbar = () => {
   // Создаем элементы навигации на основе данных из массива
   const navLinks = navItems.map((item, index) => (
-    <NavLink key={index} to={item.link} className={styles.item}>
+    <NavLink
+      key={index}
+      to={item.link}
+      className={styles.item}>
+
       <div className={styles.iconText}>
         <img src={item.icon} alt={item.text} />
         <span>{item.text}</span>
       </div>
+
     </NavLink>
   ));
 

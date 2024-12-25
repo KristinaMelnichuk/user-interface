@@ -2,29 +2,27 @@ import { connect } from 'react-redux';
 import { getUsers, loadMoreUsers, follow, unfollow } from '../../redux/reducer-usersPage.js';
 import React, { Component } from 'react';
 import Users from './Users/Users.jsx';
-import Preloader from '../../assets/Preloader.jsx';
+import Preloader from '../../assets/Preloader/Preloader.jsx';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect.js';
 import { compose } from 'redux';
 
 // Главный контейнер для пользователей
 class UsersAPIContainer extends Component {
     componentDidMount() {
-        // Загружаем первую страницу пользователей
-        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        this.props.getUsers(this.props.currentPage, this.props.pageSize); // Загружаем первую страницу пользователей
     };
-
+    
     loadUsers = (pageNumber) => {
         this.props.getUsers(pageNumber, this.props.pageSize); // Загрузка пользователей для текущей страницы
     };
 
     render() {
         const { isFetching, users, follow, unfollow, loadMoreUsers, followingInProgress } = this.props;
-
-        // Отображаем прелоадер, пока идет загрузка, иначе - список пользователей
+        
         return (
-            <>
+            <div>
                 {isFetching ? (
-                    <Preloader />
+                    <Preloader />  // Отображаем прелоадер, пока идет загрузка, иначе - список пользователей
                 ) : (
                     <Users
                         users={users}
@@ -34,10 +32,10 @@ class UsersAPIContainer extends Component {
                         followingInProgress={followingInProgress}
                     />
                 )}
-            </>
+            </div>
         );
     }
-}
+};
 
 const mapStateToProps = (state) => ({
     users: state.usersPage.users,

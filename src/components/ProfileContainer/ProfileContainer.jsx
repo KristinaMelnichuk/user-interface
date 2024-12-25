@@ -16,7 +16,11 @@ const ProfileContainer = (props) => {
         props.updateStatus(userId);
     }, [userId]);
 
-    return <Profile {...props} profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>;
+    return <Profile {...props}
+        profile={props.profile}
+        status={props.status}
+        updateStatus={props.updateStatus}
+    />;
 };
 
 const mapStateToProps = (state) => ({

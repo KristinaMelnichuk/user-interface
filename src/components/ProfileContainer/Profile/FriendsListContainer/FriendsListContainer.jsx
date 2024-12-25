@@ -14,8 +14,8 @@ class FriendsListAPI extends Component {
 
     render() {
         return <FriendsDisplay friendsList={this.props.friendsList} />
-    }
-}
+    };
+};
 
 const mapStateToProps = (state) => ({
     friendsList: state.profilePage.friendsList,

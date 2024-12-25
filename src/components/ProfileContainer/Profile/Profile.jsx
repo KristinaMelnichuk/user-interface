@@ -7,11 +7,17 @@ const Profile = (props) => {
   const { profile } = props;
   return (
     <div className={styles.commonProfile}>
-      <ProfileInfo profile={profile} status={props.status} updateStatus={props.updateStatus}/>
-      <MyPostsContainer profile={profile} />
+      <ProfileInfo
+        profile={profile}
+        status={props.status}
+        updateStatus={props.updateStatus}
+      />
+      <MyPostsContainer
+        profile={profile}
+      />
       <FriendsListContainer />
     </div>
   );
-}
+};
 
 export default Profile;

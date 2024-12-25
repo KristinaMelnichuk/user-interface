@@ -1,21 +1,21 @@
-.dialogElementImage img{
+.image img{
     width: 35%;
     border-radius: 50%;
 }
 
-.dialogElementName {
+.name {
     margin-left: 38%;
     margin-bottom: -16%;
     letter-spacing: 0.075em;
     line-height: 200%;
 }
 
-.dialogItem :hover a {
+.item :hover a {
     background-color: rgba(80, 75, 75, 0.345);
     border-radius: 5px;
 }
 
-.dialogItem a {
+.item a {
     text-decoration: none;
     color: rgb(255, 255, 255);
 }

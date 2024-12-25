@@ -1,4 +1,4 @@
-import { profileAPI, friendsListAPI, statusAPI } from '../api/api';
+import { api } from '../api/api';
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
@@ -6,6 +6,14 @@ const SET_FRIENDS = 'SET_FRIENDS'; // Новый экшен для устано�
 const SET_USERS = 'SET_USERS';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
+
+// Action Creators
+export const addPost = () => ({ type: ADD_POST });
+export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+export const setFriends = (friends) => ({ type: SET_FRIENDS, friends });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const setStatus = (status) => ({ type: SET_STATUS, status });
 
 const initialState = {
     users: [], // Список пользователей
@@ -59,21 +67,12 @@ const reducerProfilePage = (state = initialState, action) => {
         default:
             return state;
     }
-}
-
-// Action Creators
-export const addPost = () => ({ type: ADD_POST });
-export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
-export const setFriends = (friends) => ({ type: SET_FRIENDS, friends });
-export const setUsers = (users) => ({ type: SET_USERS, users });
-export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-export const setStatus = (status) => ({ type: SET_STATUS, status });
-
+};
 
 // thunk creators
 export const fetchUserProfile = (userId) => {
     return (dispatch) => {
-        profileAPI.getUserProfile(userId)
+        api.profile.getUserProfile(userId)
             .then(response => {
                 dispatch(setUserProfile(response.data));
             })
@@ -81,12 +80,11 @@ export const fetchUserProfile = (userId) => {
                 console.error("Ошибка загрузки профиля", error);
             });
     }
-}
-
+};
 
 export const fetchLoadFriends = (pageSize) => {
     return (dispatch) => {
-        friendsListAPI.getUsers(pageSize)
+        api.friendsList.getUsers(pageSize)
             .then(response => {
                 dispatch(setFriends(response.data.items));
             })
@@ -94,11 +92,11 @@ export const fetchLoadFriends = (pageSize) => {
                 console.error("Ошибка при загрузке друзей:", error);
             });
     }
-}
+};
 
 export const getStatus = (userId) => {
     return (dispatch) => {
-        statusAPI.getStatus(userId)
+        api.profile.getStatus(userId)
             .then(response => {
                 dispatch(setStatus(response.data));
             })
@@ -106,11 +104,11 @@ export const getStatus = (userId) => {
                 console.error("Ошибка при обработке статуса:", error);
             });
     }
-}
+};
 
 export const updateStatus = (status) => {
     return (dispatch) => {
-        statusAPI.updateStatus(status)
+        api.profile.updateStatus(status)
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(setStatus(status));
@@ -120,6 +118,6 @@ export const updateStatus = (status) => {
                 console.error("Ошибка при обновлении статуса:", error);
             });
     }
-}
+};
 
 export default reducerProfilePage;

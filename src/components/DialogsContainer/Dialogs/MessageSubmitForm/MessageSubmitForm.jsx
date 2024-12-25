@@ -18,7 +18,7 @@ const MessageSubmitForm = (props) => {
                             name="newMessageBody"
                             placeholder="Введите текст сообщения"
                             value={values.newMessageBody}
-                            onChange={(e) => {
+                            onChange = {(e) => {
                                 handleChange(e);
                                 props.updateNewMessageBody(e.target.value);
                             }}

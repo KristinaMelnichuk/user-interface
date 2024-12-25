@@ -27,6 +27,6 @@ const ProfileContactList = ({ contacts }) => {
             )}
         </ul>
     );
-}
+};
 
 export default ProfileContactList;

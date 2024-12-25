@@ -4,7 +4,7 @@ import styles from './Users.module.css';
 
 const Users = (props) => {
 
-const {users, unfollow, follow, followingInProgress, loadMoreUsers} = props;
+    const { users, unfollow, follow, followingInProgress, loadMoreUsers } = props;
 
     const usersList = users.map(user => (
         <UsersInfo
@@ -20,15 +20,12 @@ const {users, unfollow, follow, followingInProgress, loadMoreUsers} = props;
     return (
         <div>
             {usersList}
-            <div>
-                <button
-                    className={styles.button}
-                    onClick={loadMoreUsers}>
-                    Показать пользователей
-                </button>
-            </div>
+            <button className={styles.button}
+                onClick={loadMoreUsers}>
+                Показать пользователей
+            </button>
         </div>
     );
-}
+};
 
 export default Users;

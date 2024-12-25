@@ -10,26 +10,29 @@ class ProfileStatus extends Component {
     activateEditMode = () => {
         this.setState({
             editMode: true,
-        })
+        });
     };
 
     deactivateEditMode = () => {
         this.setState({
             editMode: false,
-        })
-        this.props.updateStatus(this.state.status);
+        });
+        
+        if (this.props.status !== this.state.status) {
+            this.props.updateStatus(this.state.status);
+        }
     };
 
     onStatusChange = (e) => {
         this.setState({
             status: e.currentTarget.value,
         });
-    }
+    };
 
     componentDidUpdate(prevProps) {
         if (prevProps.status !== this.props.status) {
             this.setState({
-                status: this.props.status
+                status: this.props.status,
             });
         }
     }
