@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
+import { Input } from '../../assets/FormsControl/FormsControls';
 
 const LoginForm = (props) => {
     return (
@@ -20,6 +21,7 @@ const LoginForm = (props) => {
                             name="login"
                             placeholder="Login"
                             type="text"
+                            component={Input}
                         />
                     </div>
                     <div>
@@ -27,12 +29,14 @@ const LoginForm = (props) => {
                             name="password"
                             placeholder="Password"
                             type="password"
+                            component={Input}
                         />
                     </div>
                     <div>
                         <Field
                             name="rememberMe"
                             type="checkbox"
+                            component={Input}
                         />
                         Remember me
                     </div>
